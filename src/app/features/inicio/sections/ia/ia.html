@@ -1,0 +1,49 @@
+<section id="ia" class="w-full py-space-xl">
+  <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
+    <div class="mb-space-xl grid grid-cols-1 items-end gap-gutter lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <span class="mb-space-xs block font-label-sm text-label-sm uppercase tracking-widest text-accent">
+          Inteligencia artificial
+        </span>
+        <h2 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">
+          Soluciones de IA que se integran a tu operación
+        </h2>
+      </div>
+      <p class="font-body-md text-body-md text-on-surface-variant lg:col-span-5">
+        No vendemos demos sueltas. Conectamos modelos, datos y procesos para que la IA tome decisiones útiles, auditables
+        y en producción.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-gutter md:grid-cols-2">
+      @for (item of capabilities; track item.title) {
+        <article class="rounded bg-surface-container-low p-space-lg">
+          <div class="mb-space-md flex h-12 w-12 items-center justify-center rounded bg-surface-container text-accent">
+            <span class="material-symbols-outlined text-headline-sm">{{ item.icon }}</span>
+          </div>
+          <h3 class="mb-space-sm font-headline-sm text-headline-sm font-semibold text-primary">{{ item.title }}</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">{{ item.description }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="mt-space-xl flex flex-col items-start justify-between gap-space-md rounded bg-surface-container p-space-lg md:flex-row md:items-center">
+      <div>
+        <p class="mb-space-xs font-label-sm text-label-sm uppercase tracking-widest text-secondary">
+          Discovery de IA · 2 semanas
+        </p>
+        <p class="max-w-xl font-body-md text-body-md text-on-surface">
+          Evaluamos casos de uso, datos disponibles, riesgo y ROI antes de construir el primer piloto.
+        </p>
+      </div>
+      <a
+        class="inline-flex items-center gap-space-xs rounded bg-primary px-space-lg py-space-md font-label-md text-label-md font-semibold uppercase text-on-primary hover:bg-primary-fixed hover:text-on-primary-fixed"
+        routerLink="/"
+        fragment="contacto"
+      >
+        Pedir discovery
+        <span class="material-symbols-outlined text-label-md">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</section>

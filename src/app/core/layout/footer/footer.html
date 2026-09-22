@@ -1,0 +1,62 @@
+<footer class="w-full">
+  <div class="mx-auto max-w-[1440px] px-margin-mobile pt-space-xl pb-space-lg md:px-margin-tablet lg:px-margin">
+    <div class="mb-space-xl grid grid-cols-1 gap-gutter md:grid-cols-2 lg:grid-cols-12">
+      <div class="flex flex-col items-start lg:col-span-5">
+        <a class="mb-space-md inline-block" routerLink="/" fragment="inicio">
+          <app-brand-logo variant="horizontal" imgClass="h-12 w-auto max-w-[280px]" />
+        </a>
+        <p class="mb-space-lg max-w-sm font-body-sm text-body-sm text-on-surface-variant">
+          Estudio de software e inteligencia artificial: sistemas distribuidos, productos digitales y agentes
+          aplicados al negocio.
+        </p>
+        <div class="flex flex-wrap gap-space-xs">
+          @for (tag of ['Angular', 'TypeScript', 'Python', 'Go', 'IA']; track tag) {
+            <span
+              class="rounded bg-surface-container px-space-sm py-space-xs font-label-sm text-label-sm uppercase text-on-surface-variant"
+            >
+              {{ tag }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col lg:col-span-3">
+        <span class="mb-space-md font-label-md text-label-md uppercase tracking-wider text-primary">Explorar</span>
+        <ul class="space-y-space-sm">
+          @for (link of links; track link.fragment) {
+            <li>
+              <a
+                class="font-body-sm text-body-sm text-on-surface-variant transition-colors hover:text-on-surface"
+                routerLink="/"
+                [fragment]="link.fragment"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="flex flex-col lg:col-span-4">
+        <span class="mb-space-md font-label-md text-label-md uppercase tracking-wider text-primary">Contacto</span>
+        <div class="mb-space-md space-y-space-sm text-on-surface-variant">
+          <p class="font-body-sm text-body-sm">contacto&#64;astradev.tech</p>
+          <p class="font-body-sm text-body-sm">Silicon Valley • Santiago • Madrid</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-between gap-space-md pt-space-md sm:flex-row">
+      <span class="font-label-sm text-label-sm text-outline">
+        © {{ year }} Astra Dev. Todos los derechos reservados.
+      </span>
+      <a
+        class="font-label-sm text-label-sm text-outline transition-colors hover:text-on-surface"
+        routerLink="/"
+        fragment="contacto"
+      >
+        Solicitar propuesta
+      </a>
+    </div>
+  </div>
+</footer>
