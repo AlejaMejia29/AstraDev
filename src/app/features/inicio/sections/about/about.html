@@ -4,18 +4,19 @@
       <div class="flex flex-col lg:col-span-6">
         <div class="mb-space-sm inline-flex items-center gap-space-xs text-secondary">
           <span class="material-symbols-outlined text-label-md">verified</span>
-          <span class="font-label-sm text-label-sm uppercase tracking-wider">El manifiesto Astra</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-wider">
+            {{ i18n.copy().about.eyebrow }}
+          </span>
         </div>
         <h2 class="mb-space-md font-headline-lg text-headline-lg font-bold tracking-tight text-primary">
-          Ingeniería seria para productos que tienen que escalar.
+          {{ i18n.copy().about.title }}
         </h2>
         <p class="mb-space-lg font-body-lg text-body-lg text-on-surface-variant">
-          En Astra Dev combinamos desarrollo de software de misión crítica con inteligencia artificial aplicada. El
-          resultado: sistemas que no solo se ven bien en un demo, sino que operan en producción.
+          {{ i18n.copy().about.body }}
         </p>
 
         <div class="space-y-space-md">
-          @for (pillar of pillars; track pillar.title) {
+          @for (pillar of i18n.copy().about.pillars; track pillar.title) {
             <div class="flex items-start gap-space-md rounded bg-surface-container p-space-md">
               <div
                 class="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-surface-container-high text-primary"
@@ -37,7 +38,7 @@
         </div>
         <div class="w-full max-w-lg rounded bg-surface-container-low p-space-lg">
           <span class="mb-space-sm block text-center font-label-sm text-label-sm uppercase tracking-widest text-outline">
-            Stack tecnológico
+            {{ i18n.copy().about.stack }}
           </span>
           <div class="grid grid-cols-2 gap-space-xs text-center font-label-sm text-label-sm sm:grid-cols-3">
             @for (item of stack; track item) {

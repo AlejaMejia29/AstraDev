@@ -3,17 +3,19 @@
     <div class="mb-space-xl flex flex-col justify-between gap-space-md md:flex-row md:items-end">
       <div>
         <span class="mb-space-xs block font-label-sm text-label-sm uppercase tracking-widest text-secondary">
-          Casos de éxito
+          {{ i18n.copy().projects.eyebrow }}
         </span>
-        <h2 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">Proyectos destacados</h2>
+        <h2 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">
+          {{ i18n.copy().projects.title }}
+        </h2>
       </div>
       <p class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
-        Impacto real en producción
+        {{ i18n.copy().projects.note }}
       </p>
     </div>
 
     <div class="space-y-space-lg">
-      @for (project of projects; track project.title) {
+      @for (project of i18n.copy().projects.items; track project.title) {
         <article
           class="group rounded bg-surface-container-low p-space-lg transition-all hover:bg-surface-container md:p-space-xl"
         >
@@ -58,7 +60,7 @@
                   routerLink="/"
                   fragment="contacto"
                 >
-                  Ver especificación
+                  {{ i18n.copy().projects.spec }}
                   <span class="material-symbols-outlined text-label-md">arrow_forward</span>
                 </a>
               </div>

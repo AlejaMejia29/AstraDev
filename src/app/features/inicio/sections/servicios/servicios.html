@@ -1,47 +1,118 @@
 <section id="servicios" class="w-full py-space-xl">
   <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
-    <div class="mb-space-xl flex flex-col justify-between gap-space-md md:flex-row md:items-end">
-      <div>
-        <span class="mb-space-xs block font-label-sm text-label-sm uppercase tracking-widest text-secondary">
-          Capacidades
-        </span>
+    <div class="mb-space-lg flex flex-col justify-between gap-space-lg lg:flex-row lg:items-end">
+      <div class="max-w-3xl">
+        <div
+          class="mb-space-md inline-flex items-center gap-space-xs rounded-full bg-accent/15 px-space-sm py-space-xs"
+        >
+          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-accent"></span>
+          <span class="font-label-sm text-label-sm font-semibold uppercase tracking-[0.14em] text-accent">
+            {{ i18n.copy().services.eyebrow }}
+          </span>
+        </div>
         <h2 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">
-          Servicios de desarrollo e IA
+          {{ i18n.copy().services.title }}
         </h2>
       </div>
-      <p class="max-w-md font-body-md text-body-md text-on-surface-variant">
-        Ingeniería de software de punta a punta, con inteligencia artificial integrada donde genera valor real.
-      </p>
+      <div class="flex items-end justify-between gap-space-lg">
+        <p class="max-w-md border-l-2 border-accent/50 pl-space-md font-body-lg text-body-lg text-on-surface">
+          {{ i18n.copy().services.intro }}
+        </p>
+        <div class="hidden shrink-0 items-center gap-space-sm sm:flex">
+          <button
+            class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
+            type="button"
+            [attr.aria-label]="i18n.copy().services.prev"
+            (click)="prev()"
+          >
+            <span class="material-symbols-outlined">chevron_left</span>
+          </button>
+          <button
+            class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
+            type="button"
+            [attr.aria-label]="i18n.copy().services.next"
+            (click)="next()"
+          >
+            <span class="material-symbols-outlined">chevron_right</span>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-gutter md:grid-cols-2 lg:grid-cols-3">
-      @for (service of services; track service.title) {
-        <article
-          class="group flex flex-col justify-between rounded bg-surface-container-low p-space-lg transition-all hover:bg-surface-container"
-        >
-          <div>
-            <div
-              class="mb-space-md flex h-12 w-12 items-center justify-center rounded bg-surface-container text-primary transition-transform group-hover:scale-105"
-            >
-              <span class="material-symbols-outlined text-headline-sm">{{ service.icon }}</span>
+    <div
+      class="mx-auto max-w-5xl overflow-hidden rounded"
+      (pointerdown)="onPointerDown($event)"
+      (pointerup)="onPointerUp($event)"
+    >
+      <div class="carousel-track" [style.transform]="'translateX(-' + active() * 100 + '%)'">
+        @for (service of i18n.copy().services.items; track service.title) {
+          <article class="carousel-slide px-0 md:px-0">
+            <div class="service-card flex h-full flex-col rounded md:flex-row">
+              <div class="relative h-44 overflow-hidden md:h-auto md:w-2/5 lg:min-h-[240px]">
+                <img
+                  [src]="service.image"
+                  [alt]="service.imageAlt"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div class="flex flex-1 flex-col justify-center p-space-md md:p-space-lg">
+                <div
+                  class="mb-space-sm flex h-10 w-10 items-center justify-center rounded bg-surface-container text-accent"
+                >
+                  <span class="material-symbols-outlined text-label-lg">{{ service.icon }}</span>
+                </div>
+                <h3 class="mb-space-sm font-headline-sm text-headline-sm font-semibold text-primary">
+                  {{ service.title }}
+                </h3>
+                <p class="mb-space-md font-body-sm text-body-sm text-on-surface-variant md:text-body-md">
+                  {{ service.description }}
+                </p>
+                @if (service.tags.length) {
+                  <div class="flex flex-wrap gap-space-xs">
+                    @for (tag of service.tags; track tag) {
+                      <span
+                        class="rounded bg-accent/10 px-space-sm py-space-xs font-label-sm text-label-sm text-accent"
+                      >
+                        {{ tag }}
+                      </span>
+                    }
+                  </div>
+                }
+              </div>
             </div>
-            <h3 class="mb-space-sm font-headline-sm text-headline-sm font-semibold text-primary">
-              {{ service.title }}
-            </h3>
-            <p class="mb-space-md font-body-md text-body-md text-on-surface-variant">
-              {{ service.description }}
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-space-xs pt-space-sm">
-            @for (tag of service.tags; track tag) {
-              <span
-                class="rounded bg-surface-container-high px-space-sm py-space-xs font-label-sm text-label-sm text-secondary"
-              >
-                {{ tag }}
-              </span>
-            }
-          </div>
-        </article>
+          </article>
+        }
+      </div>
+    </div>
+
+    <div class="mt-space-md flex items-center justify-center gap-space-sm sm:hidden">
+      <button
+        class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
+        type="button"
+        [attr.aria-label]="i18n.copy().services.prev"
+        (click)="prev()"
+      >
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+      <button
+        class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
+        type="button"
+        [attr.aria-label]="i18n.copy().services.next"
+        (click)="next()"
+      >
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+    </div>
+
+    <div class="mt-space-md flex items-center justify-center gap-space-xs">
+      @for (service of i18n.copy().services.items; track service.title; let i = $index) {
+        <button
+          class="dot"
+          [class.active]="active() === i"
+          type="button"
+          [attr.aria-label]="service.title"
+          (click)="goTo(i)"
+        ></button>
       }
     </div>
   </div>

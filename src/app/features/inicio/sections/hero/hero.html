@@ -17,30 +17,30 @@
         >
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-accent"></span>
           <span class="font-label-sm text-label-sm uppercase tracking-wider">
-            Desarrollo de software &amp; soluciones con IA
+            {{ i18n.copy().hero.badge }}
           </span>
         </div>
 
         <h1
           class="mb-space-md max-w-2xl font-display-xl text-headline-lg leading-[1.08] tracking-tight text-primary lg:text-display-xl"
         >
-          Ideas que construyen futuro.
-          <span class="block font-light text-secondary">Software e inteligencia artificial.</span>
+          {{ i18n.copy().hero.title }}
+          <span class="block font-light text-secondary">{{ i18n.copy().hero.subtitle }}</span>
         </h1>
 
         <p class="mb-space-xl max-w-xl font-body-lg text-body-lg text-on-surface-variant">
-          Diseñamos plataformas cloud, productos digitales y sistemas de IA aplicados al negocio: agentes, RAG y
-          automatización con arquitectura robusta.
+          {{ i18n.copy().hero.body }}
         </p>
 
-        <div class="mb-space-xl flex flex-wrap items-center gap-space-md">
+        <div class="flex flex-wrap items-center gap-space-md">
           <a
             class="inline-flex items-center gap-space-xs rounded bg-primary px-space-lg py-space-md font-label-md text-label-md font-semibold uppercase text-on-primary transition-all hover:bg-primary-fixed hover:text-on-primary-fixed"
-            routerLink="/"
-            fragment="contacto"
+            [href]="i18n.copy().whatsapp.href"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span>Agendar consulta técnica</span>
-            <span class="material-symbols-outlined text-label-md">arrow_forward</span>
+            <span class="material-symbols-outlined text-label-md">chat</span>
+            <span>{{ i18n.copy().hero.ctaPrimary }}</span>
           </a>
           <a
             class="inline-flex items-center gap-space-xs rounded bg-surface-container-high px-space-lg py-space-md font-label-md text-label-md uppercase text-on-surface transition-all hover:bg-surface-container-highest"
@@ -48,20 +48,8 @@
             fragment="ia"
           >
             <span class="material-symbols-outlined text-label-md">neurology</span>
-            <span>Ver soluciones de IA</span>
+            <span>{{ i18n.copy().hero.ctaSecondary }}</span>
           </a>
-        </div>
-
-        <div
-          class="flex flex-wrap items-center gap-space-md rounded bg-surface-container-low px-space-md py-space-xs font-label-sm text-label-sm text-on-surface-variant"
-        >
-          <span class="flex items-center gap-1 text-secondary">
-            <span class="material-symbols-outlined text-label-sm">terminal</span>
-            sys.kernel.status:
-          </span>
-          <span class="font-medium text-primary">READY_FOR_DEPLOYMENT</span>
-          <span class="text-outline">|</span>
-          <span>IA inference: ONLINE</span>
         </div>
       </div>
 
@@ -74,33 +62,36 @@
               <span class="h-2.5 w-2.5 rounded-full bg-accent"></span>
               <span class="ml-space-xs font-label-sm text-label-sm text-secondary">ASTRA_AI_RUNTIME</span>
             </div>
-            <span class="rounded bg-surface-container-high px-space-xs py-0.5 font-label-sm text-label-sm text-secondary">
-              GPU-01
-            </span>
           </div>
 
           <div
-            class="space-y-1 overflow-x-auto rounded bg-surface-container-lowest p-space-sm font-label-sm text-label-sm text-on-surface-variant"
+            class="min-h-[148px] space-y-1 overflow-x-auto rounded bg-surface-container-lowest p-space-sm font-label-sm text-label-sm text-on-surface-variant"
           >
-            <div class="flex items-center justify-between text-secondary">
-              <span>[ASTRA-ENGINE] Bootstrapping agent graph...</span>
-              <span class="text-primary">OK</span>
-            </div>
-            <p class="text-outline">&gt; import &#123; AstraAgent &#125; from '&#64;astradev/ai';</p>
-            <p class="text-primary">&gt; const agent = new AstraAgent(&#123; tools: 'erp,crm' &#125;);</p>
-            <p class="text-secondary">&gt; agent.mountRag(&#123; index: 'corp-docs' &#125;);</p>
-            <p class="text-outline">&gt; // Guardrails + human-in-the-loop</p>
-            <div class="flex items-center gap-space-xs pt-space-xs text-secondary">
-              <span class="h-1.5 w-1.5 animate-ping rounded-full bg-accent"></span>
-              <span>INFERENCE_QOS: 99.9% · 142ms p95</span>
-            </div>
+            @for (line of lines; track line.text; let i = $index) {
+              @if (typed()[i] || i === 0) {
+                <div class="flex items-center justify-between" [class]="lineClass(line.kind)">
+                  <p>
+                    @if (line.kind === 'live' && typed()[i]) {
+                      <span class="mr-space-xs inline-block h-1.5 w-1.5 animate-ping rounded-full bg-accent"></span>
+                    }
+                    <span>{{ typed()[i] }}</span>
+                    @if (activeLine() === i && typed()[i].length < line.text.length) {
+                      <span class="caret"></span>
+                    }
+                  </p>
+                  @if (i === 0 && bootOk()) {
+                    <span class="text-primary">OK</span>
+                  }
+                </div>
+              }
+            }
           </div>
         </div>
       </div>
     </div>
 
     <div class="mt-space-xl grid grid-cols-2 gap-gutter pt-space-xl md:grid-cols-4">
-      @for (stat of stats; track stat.label) {
+      @for (stat of i18n.copy().stats; track stat.label) {
         <div class="flex flex-col justify-between rounded bg-surface-container-low p-space-md">
           <span class="mb-space-xs font-label-sm text-label-sm uppercase tracking-widest text-outline">
             {{ stat.label }}

@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { AI_CAPABILITIES } from '../../data/inicio.data';
+import { Component, inject } from '@angular/core';
+import { I18nService } from '../../../../core/i18n/i18n.service';
 
 @Component({
   selector: 'app-ia',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './ia.html',
   styles: ``,
 })
 export class Ia {
-  protected readonly capabilities = AI_CAPABILITIES;
+  protected readonly i18n = inject(I18nService);
 }

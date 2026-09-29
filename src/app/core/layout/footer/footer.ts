@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NAV_LINKS } from '../../../shared/data/navigation.data';
+import { I18nService } from '../../i18n/i18n.service';
 import { BrandLogo } from '../../../shared/ui/brand-logo/brand-logo';
 
 @Component({
@@ -10,6 +10,6 @@ import { BrandLogo } from '../../../shared/ui/brand-logo/brand-logo';
   styles: ``,
 })
 export class Footer {
-  protected readonly links = NAV_LINKS;
+  protected readonly i18n = inject(I18nService);
   protected readonly year = new Date().getFullYear();
 }

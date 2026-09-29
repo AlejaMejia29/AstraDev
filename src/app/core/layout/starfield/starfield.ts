@@ -2,11 +2,13 @@ import {
   afterNextRender,
   Component,
   DestroyRef,
+  effect,
   ElementRef,
   inject,
   NgZone,
   viewChild,
 } from '@angular/core';
+import { ThemeService } from '../../theme/theme.service';
 
 interface Star {
   x: number;
@@ -24,6 +26,9 @@ interface Star {
 @Component({
   selector: 'app-starfield',
   template: `<canvas #canvas class="starfield-canvas" aria-hidden="true"></canvas>`,
+  host: {
+    '[class.light]': 'theme.theme() === "light"',
+  },
   styles: `
     :host {
       position: fixed;
@@ -31,6 +36,10 @@ interface Star {
       z-index: 0;
       pointer-events: none;
       background: #0b0b0d;
+    }
+
+    :host.light {
+      background: #f4f2f5;
     }
 
     .starfield-canvas {
@@ -44,8 +53,13 @@ export class Starfield {
   private readonly canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
   private readonly zone = inject(NgZone);
   private readonly destroyRef = inject(DestroyRef);
+  protected readonly theme = inject(ThemeService);
+  private isLight = false;
 
   constructor() {
+    effect(() => {
+      this.isLight = this.theme.theme() === 'light';
+    });
     afterNextRender(() => this.start());
   }
 
@@ -116,8 +130,10 @@ export class Starfield {
         star.y += (star.homeY - star.y) * 0.045;
 
         const pulse = 0.45 + 0.55 * Math.abs(Math.sin(frame * star.speed + star.twinkle));
+        const tone = this.isLight ? '28, 27, 30' : '229, 225, 228';
+        const alpha = star.baseAlpha * pulse * (this.isLight ? 0.45 : 1);
         ctx.beginPath();
-        ctx.fillStyle = `rgba(229, 225, 228, ${star.baseAlpha * pulse})`;
+        ctx.fillStyle = `rgba(${tone}, ${alpha})`;
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
       }

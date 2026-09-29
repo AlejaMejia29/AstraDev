@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { BUDGET_OPTIONS, CONTACT_CHANNELS, SOLUTION_OPTIONS } from '../../data/inicio.data';
+import { Component, inject, signal } from '@angular/core';
+import { I18nService } from '../../../../core/i18n/i18n.service';
 
 @Component({
   selector: 'app-contacto',
@@ -8,9 +8,7 @@ import { BUDGET_OPTIONS, CONTACT_CHANNELS, SOLUTION_OPTIONS } from '../../data/i
   styles: ``,
 })
 export class Contacto {
-  protected readonly channels = CONTACT_CHANNELS;
-  protected readonly solutions = SOLUTION_OPTIONS;
-  protected readonly budgets = BUDGET_OPTIONS;
+  protected readonly i18n = inject(I18nService);
   protected readonly formSent = signal(false);
 
   protected onSubmit(event: Event): void {

@@ -37,6 +37,8 @@ export const SERVICES: ServiceItem[] = [
     description:
       'Microservicios, orquestación elástica y APIs robustas para millones de consultas concurrentes.',
     tags: ['Kubernetes', 'AWS / GCP', 'Go / gRPC'],
+    image: '/services/custom.jpg',
+    imageAlt: 'Arquitectura cloud',
   },
   {
     icon: 'web',
@@ -44,6 +46,8 @@ export const SERVICES: ServiceItem[] = [
     description:
       'Interfaces reactivas, rendering instantáneo y productos web complejos con precisión milimétrica.',
     tags: ['Angular', 'TypeScript', 'GraphQL'],
+    image: '/services/web.jpg',
+    imageAlt: 'Aplicaciones web',
   },
   {
     icon: 'devices',
@@ -51,6 +55,8 @@ export const SERVICES: ServiceItem[] = [
     description:
       'Apps fluidas, integración con hardware, sincronización offline-first y diseño háptico.',
     tags: ['Flutter', 'Swift / Kotlin', 'React Native'],
+    image: '/services/mobile.jpg',
+    imageAlt: 'Aplicaciones móviles',
   },
   {
     icon: 'neurology',
@@ -58,6 +64,8 @@ export const SERVICES: ServiceItem[] = [
     description:
       'Agentes, RAG, visión artificial y modelos generativos conectados a tus sistemas de negocio.',
     tags: ['LangChain', 'PyTorch', 'Vector DBs'],
+    image: '/services/custom.jpg',
+    imageAlt: 'Inteligencia artificial',
   },
   {
     icon: 'security',
@@ -65,6 +73,8 @@ export const SERVICES: ServiceItem[] = [
     description:
       'CI/CD, infraestructura inmutable, auditorías de código y hardening continuo de plataformas.',
     tags: ['Terraform', 'GitHub Actions', 'SOC2'],
+    image: '/services/consulting.jpg',
+    imageAlt: 'Ciberseguridad',
   },
   {
     icon: 'sync_saved_locally',
@@ -72,6 +82,8 @@ export const SERVICES: ServiceItem[] = [
     description:
       'Migración de monolitos a arquitecturas modulares sin cortar el servicio ni perder datos.',
     tags: ['Refactorización', 'ETL', 'Event Driven'],
+    image: '/services/inventory.jpg',
+    imageAlt: 'Modernización de sistemas',
   },
 ];
 
@@ -215,8 +227,8 @@ export const SOLUTION_OPTIONS = [
 ];
 
 export const BUDGET_OPTIONS = [
-  { value: '15-30k', label: '$15k - $30k' },
-  { value: '30-75k', label: '$30k - $75k' },
-  { value: '75-150k', label: '$75k - $150k' },
-  { value: '150k+', label: '+$150k Enterprise' },
+  { value: 'piloto', label: 'Piloto / demo' },
+  { value: 'producto', label: 'Producto' },
+  { value: 'plataforma', label: 'Plataforma' },
+  { value: 'definir', label: 'A definir' },
 ];

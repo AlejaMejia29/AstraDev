@@ -1,5 +1,5 @@
 <header
-  class="fixed top-0 left-0 z-50 w-full bg-surface-dim/80 shadow-[0_1px_8px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+  class="fixed top-0 left-0 z-50 w-full bg-surface-dim/80 shadow-[0_1px_8px_rgba(0,0,0,0.12)] backdrop-blur-xl"
 >
   <div
     class="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-margin-mobile md:px-margin-tablet lg:px-margin"
@@ -10,7 +10,7 @@
     </a>
 
     <nav class="hidden items-center gap-space-sm lg:flex">
-      @for (link of links; track link.fragment) {
+      @for (link of i18n.copy().nav; track link.fragment) {
         <a
           class="px-space-sm py-space-xs font-label-md text-label-md uppercase tracking-wider text-on-surface-variant transition-colors hover:text-on-surface"
           routerLink="/"
@@ -21,21 +21,40 @@
       }
     </nav>
 
-    <div class="flex items-center gap-space-sm">
+    <div class="flex items-center gap-space-xs">
+      <button
+        class="inline-flex h-10 min-w-10 items-center justify-center rounded bg-surface-container px-space-sm font-label-md text-label-md text-primary"
+        type="button"
+        (click)="i18n.toggle()"
+        [attr.aria-label]="i18n.copy().header.language"
+      >
+        {{ i18n.lang() === 'es' ? 'EN' : 'ES' }}
+      </button>
+      <button
+        class="inline-flex h-10 w-10 items-center justify-center rounded bg-surface-container text-primary"
+        type="button"
+        (click)="theme.toggle()"
+        [attr.aria-label]="i18n.copy().header.theme"
+      >
+        <span class="material-symbols-outlined">
+          {{ theme.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}
+        </span>
+      </button>
       <a
-        class="inline-flex items-center justify-center rounded bg-primary px-space-md py-space-sm font-label-md text-label-md font-semibold uppercase text-on-primary transition-all hover:bg-primary-fixed hover:text-on-primary-fixed"
-        routerLink="/"
-        fragment="contacto"
+        class="hidden items-center justify-center rounded bg-primary px-space-md py-space-sm font-label-md text-label-md font-semibold uppercase text-on-primary transition-all hover:bg-primary-fixed hover:text-on-primary-fixed sm:inline-flex"
+        [href]="i18n.copy().whatsapp.href"
+        target="_blank"
+        rel="noopener noreferrer"
         (click)="closeMenu()"
       >
-        Cotizar
+        {{ i18n.copy().header.quote }}
       </a>
       <button
         class="inline-flex h-10 w-10 items-center justify-center rounded bg-surface-container text-primary lg:hidden"
         type="button"
         (click)="toggleMenu()"
         [attr.aria-expanded]="menuOpen()"
-        aria-label="Abrir menú"
+        [attr.aria-label]="i18n.copy().header.openMenu"
       >
         <span class="material-symbols-outlined">{{ menuOpen() ? 'close' : 'menu' }}</span>
       </button>
@@ -45,7 +64,7 @@
   @if (menuOpen()) {
     <nav class="border-t border-outline-variant bg-surface-dim px-margin-mobile py-space-md lg:hidden">
       <div class="flex flex-col gap-space-xs">
-        @for (link of links; track link.fragment) {
+        @for (link of i18n.copy().nav; track link.fragment) {
           <a
             class="rounded px-space-sm py-space-sm font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:bg-surface-container hover:text-on-surface"
             routerLink="/"
@@ -55,6 +74,15 @@
             {{ link.label }}
           </a>
         }
+        <a
+          class="mt-space-sm rounded bg-primary px-space-sm py-space-sm text-center font-label-md text-label-md font-semibold uppercase text-on-primary sm:hidden"
+          [href]="i18n.copy().whatsapp.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          (click)="closeMenu()"
+        >
+          {{ i18n.copy().header.quote }}
+        </a>
       </div>
     </nav>
   }

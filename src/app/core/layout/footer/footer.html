@@ -6,11 +6,10 @@
           <app-brand-logo variant="horizontal" imgClass="h-12 w-auto max-w-[280px]" />
         </a>
         <p class="mb-space-lg max-w-sm font-body-sm text-body-sm text-on-surface-variant">
-          Estudio de software e inteligencia artificial: sistemas distribuidos, productos digitales y agentes
-          aplicados al negocio.
+          {{ i18n.copy().footer.blurb }}
         </p>
         <div class="flex flex-wrap gap-space-xs">
-          @for (tag of ['Angular', 'TypeScript', 'Python', 'Go', 'IA']; track tag) {
+          @for (tag of ['Angular', 'TypeScript', 'Python', 'IA']; track tag) {
             <span
               class="rounded bg-surface-container px-space-sm py-space-xs font-label-sm text-label-sm uppercase text-on-surface-variant"
             >
@@ -21,9 +20,11 @@
       </div>
 
       <div class="flex flex-col lg:col-span-3">
-        <span class="mb-space-md font-label-md text-label-md uppercase tracking-wider text-primary">Explorar</span>
+        <span class="mb-space-md font-label-md text-label-md uppercase tracking-wider text-primary">
+          {{ i18n.copy().footer.explore }}
+        </span>
         <ul class="space-y-space-sm">
-          @for (link of links; track link.fragment) {
+          @for (link of i18n.copy().nav; track link.fragment) {
             <li>
               <a
                 class="font-body-sm text-body-sm text-on-surface-variant transition-colors hover:text-on-surface"
@@ -38,24 +39,34 @@
       </div>
 
       <div class="flex flex-col lg:col-span-4">
-        <span class="mb-space-md font-label-md text-label-md uppercase tracking-wider text-primary">Contacto</span>
+        <span class="mb-space-md font-label-md text-label-md uppercase tracking-wider text-primary">
+          {{ i18n.copy().footer.contact }}
+        </span>
         <div class="mb-space-md space-y-space-sm text-on-surface-variant">
+          <a
+            class="block font-body-sm text-body-sm hover:text-on-surface"
+            [href]="i18n.copy().whatsapp.href"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp · {{ i18n.copy().whatsapp.phone }}
+          </a>
           <p class="font-body-sm text-body-sm">contacto&#64;astradev.tech</p>
-          <p class="font-body-sm text-body-sm">Silicon Valley • Santiago • Madrid</p>
         </div>
       </div>
     </div>
 
     <div class="flex flex-col items-center justify-between gap-space-md pt-space-md sm:flex-row">
       <span class="font-label-sm text-label-sm text-outline">
-        © {{ year }} Astra Dev. Todos los derechos reservados.
+        © {{ year }} Astra Dev. {{ i18n.copy().footer.rights }}
       </span>
       <a
         class="font-label-sm text-label-sm text-outline transition-colors hover:text-on-surface"
-        routerLink="/"
-        fragment="contacto"
+        [href]="i18n.copy().whatsapp.href"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        Solicitar propuesta
+        {{ i18n.copy().footer.proposal }}
       </a>
     </div>
   </div>
