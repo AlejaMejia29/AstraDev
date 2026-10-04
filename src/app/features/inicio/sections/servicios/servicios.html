@@ -1,33 +1,94 @@
 <section id="servicios" class="w-full py-space-xl lg:py-20">
   <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
-    <div appReveal class="mb-space-xl flex flex-col justify-between gap-space-md lg:flex-row lg:items-end">
+    <div
+      appReveal
+      class="mb-space-xl flex flex-col justify-between gap-space-md lg:flex-row lg:items-end"
+    >
       <div class="max-w-3xl">
-        <div
-          class="mb-space-md inline-flex items-center gap-space-xs rounded-full bg-accent/15 px-space-sm py-space-xs"
+        <span class="eyebrow mb-space-md">
+          {{ i18n.copy().services.eyebrow }}
+        </span>
+        <h2
+          class="font-headline-lg text-headline-lg-mobile font-bold tracking-tight text-primary md:text-headline-lg"
         >
-          <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-accent"></span>
-          <span class="font-label-sm text-label-sm font-semibold uppercase tracking-[0.14em] text-accent">
-            {{ i18n.copy().services.eyebrow }}
-          </span>
-        </div>
-        <h2 class="font-headline-lg text-headline-lg-mobile font-bold tracking-tight text-primary md:text-headline-lg">
           {{ i18n.copy().services.title }}
         </h2>
       </div>
-      <p class="max-w-md border-l-2 border-accent/50 pl-space-md font-body-lg text-body-lg text-on-surface">
+      <p
+        class="max-w-md border-l-2 border-accent/50 pl-space-md font-body-lg text-body-lg text-on-surface"
+      >
         {{ i18n.copy().services.intro }}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-4">
-      @for (service of i18n.copy().services.items; track service.title; let i = $index) {
+    <div
+      appReveal
+      class="mb-space-lg flex flex-wrap gap-space-sm"
+      role="group"
+      [attr.aria-label]="i18n.copy().services.eyebrow"
+    >
+      @for (option of filters; track option) {
+        <button
+          class="inline-flex items-center gap-space-sm rounded-full border px-space-md py-space-sm font-body-md text-body-sm font-semibold transition duration-200"
+          [class]="
+            filter() === option
+              ? 'border-outline-variant bg-surface-container-high text-primary'
+              : 'border-outline-variant/40 text-on-surface-variant hover:border-outline-variant hover:text-primary'
+          "
+          type="button"
+          [attr.aria-pressed]="filter() === option"
+          (click)="filter.set(option)"
+        >
+          @if (option !== 'all') {
+            <span
+              class="h-2 w-2 rounded-full"
+              [class]="styles[option].dot"
+              aria-hidden="true"
+            ></span>
+          }
+          {{ i18n.copy().services.groups[option] }}
+          <span class="font-label-sm text-label-sm text-outline">{{ count(option) }}</span>
+        </button>
+      }
+    </div>
+
+    <div class="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      @for (service of items(); track service.title; let i = $index) {
         <article
           appReveal
-          [revealDelay]="i * 70"
-          class="flex flex-col rounded-lg border border-outline-variant/50 bg-surface-container-low p-space-lg transition duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_-28px_rgba(123,208,255,0.8)]"
+          [revealDelay]="i * 60"
+          class="relative flex flex-col rounded-2xl p-space-lg transition duration-300 ease-out hover:-translate-y-1"
+          [class]="
+            service.popular
+              ? 'border-brand-gradient shadow-[0_20px_50px_-30px_rgba(124,58,237,0.7)]'
+              : 'card'
+          "
         >
-          <div class="mb-space-md flex h-11 w-11 items-center justify-center rounded bg-accent/15 text-accent">
-            <span class="material-symbols-outlined">{{ service.icon }}</span>
+          @if (service.popular) {
+            <span
+              class="btn-brand pointer-events-none absolute -top-3 right-space-md inline-flex items-center gap-1 rounded-full px-space-sm py-1 font-body-sm text-[12px] font-semibold"
+            >
+              <span
+                class="material-symbols-outlined text-[14px] [font-variation-settings:'FILL'_1]"
+                aria-hidden="true"
+                >star</span
+              >
+              {{ i18n.copy().services.popular }}
+            </span>
+          }
+          <div class="mb-space-md flex items-center gap-space-sm">
+            <div
+              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
+              [class]="styles[service.group].soft + ' ' + styles[service.group].text"
+            >
+              <span class="material-symbols-outlined">{{ service.icon }}</span>
+            </div>
+            <span
+              class="font-body-sm text-[12px] font-semibold"
+              [class]="styles[service.group].text"
+            >
+              {{ i18n.copy().services.groups[service.group] }}
+            </span>
           </div>
           <h3 class="mb-space-sm font-headline-sm text-headline-sm font-semibold text-primary">
             {{ service.title }}
@@ -39,23 +100,46 @@
             <span class="font-semibold text-primary">{{ i18n.copy().services.idealFor }}:</span>
             {{ service.idealFor }}
           </p>
-          <a
-            class="mt-auto inline-flex items-center gap-space-xs self-start font-label-md text-label-md font-semibold uppercase text-accent transition duration-300 hover:gap-space-sm hover:text-primary"
-            [href]="service.href"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ i18n.copy().services.cta }}
-            <span class="sr-only">{{ service.title }}</span>
-            <span class="material-symbols-outlined text-label-lg">arrow_forward</span>
-          </a>
+          @if (service.page) {
+            <a
+              class="mb-space-md inline-flex items-center gap-1 self-start font-body-sm text-body-sm font-semibold text-on-surface-variant underline decoration-outline-variant underline-offset-4 transition hover:text-primary hover:decoration-accent"
+              [routerLink]="['/', pagePaths[service.page]]"
+            >
+              {{ i18n.copy().servicePages.details }}
+              <span class="sr-only">{{ service.title }}</span>
+            </a>
+          }
+          @if (service.popular) {
+            <a
+              class="btn-brand mt-auto inline-flex items-center justify-center gap-space-xs rounded px-space-md py-space-sm font-body-md text-body-md font-semibold"
+              [href]="service.href"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ i18n.copy().services.cta }}
+              <span class="sr-only">{{ service.title }}</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+          } @else {
+            <a
+              class="mt-auto inline-flex items-center gap-space-xs self-start font-body-md text-body-md font-semibold transition-all duration-300 hover:gap-space-sm"
+              [class]="styles[service.group].text"
+              [href]="service.href"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ i18n.copy().services.cta }}
+              <span class="sr-only">{{ service.title }}</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+          }
         </article>
       }
     </div>
 
     <div
       appReveal
-      class="mt-space-lg flex flex-col items-start justify-between gap-space-md rounded-lg bg-surface-container p-space-lg transition duration-300 md:flex-row md:items-center"
+      class="card-static mt-space-lg flex flex-col items-start justify-between gap-space-md p-space-lg md:flex-row md:items-center"
     >
       <div>
         <p class="mb-space-xs font-headline-sm text-headline-sm font-semibold text-primary">
@@ -66,12 +150,12 @@
         </p>
       </div>
       <a
-        class="inline-flex shrink-0 items-center gap-space-xs rounded bg-primary px-space-lg py-space-md font-label-md text-label-md font-semibold uppercase text-on-primary hover:bg-primary-fixed hover:text-on-primary-fixed"
+        class="inline-flex shrink-0 items-center gap-space-xs rounded btn-brand px-space-lg py-space-md font-body-md text-body-md font-semibold"
         [href]="i18n.copy().services.unsureHref"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <span class="material-symbols-outlined text-label-lg">chat</span>
+        <span class="material-symbols-outlined text-[18px]">chat</span>
         {{ i18n.copy().services.unsureCta }}
       </a>
     </div>

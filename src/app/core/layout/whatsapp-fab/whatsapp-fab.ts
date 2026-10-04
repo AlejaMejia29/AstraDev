@@ -6,7 +6,7 @@ import { I18nService } from '../../i18n/i18n.service';
   imports: [],
   template: `
     <a
-      class="fixed right-4 bottom-4 z-40 inline-flex h-14 items-center gap-space-sm rounded-full bg-[#25d366] px-space-md font-label-md text-label-md font-semibold text-[#0b0b0d] uppercase shadow-2xl transition duration-300 hover:scale-105 sm:right-6 sm:bottom-6 sm:px-space-lg"
+      class="fixed right-4 bottom-4 z-40 hidden h-14 sm:inline-flex items-center gap-space-sm rounded-full bg-[#25d366] px-space-md font-body-md text-body-md font-semibold text-[#0b0b0d] shadow-2xl transition duration-300 hover:scale-105 sm:right-6 sm:bottom-6 sm:px-space-lg"
       [href]="i18n.copy().whatsapp.href"
       target="_blank"
       rel="noopener noreferrer"

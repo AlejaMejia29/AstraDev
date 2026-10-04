@@ -8,11 +8,47 @@ import {
   ProcessStep,
   ProjectItem,
   SectorItem,
+  ServiceGroup,
   ServiceItem,
 } from '../../shared/models/site.models';
 import { QuoteTemplate } from '../../shared/utils/whatsapp';
 
-export type Lang = 'es' | 'en';
+export type Lang = 'es' | 'en' | 'pt';
+
+export interface LangOption {
+  code: Lang;
+  /** Language name in its own language, as shown in the switcher. */
+  label: string;
+  /** Flag shown next to the language. */
+  flag: 'co' | 'us' | 'br';
+}
+
+export const LANGS: LangOption[] = [
+  { code: 'es', label: 'Español', flag: 'co' },
+  { code: 'en', label: 'English', flag: 'us' },
+  { code: 'pt', label: 'Português', flag: 'br' },
+];
+
+export type ServicePageKey = 'pos' | 'bot' | 'ia';
+
+export interface QuizOption {
+  value: string;
+  label: string;
+  icon: string;
+}
+
+export interface ServicePage {
+  seoTitle: string;
+  seoDescription: string;
+  eyebrow: string;
+  title: string;
+  highlight: string;
+  body: string;
+  benefits: { icon: string; title: string; description: string }[];
+  idealFor: string[];
+  faq: FaqItem[];
+  whatsappMessage: string;
+}
 
 export interface AppCopy {
   title: string;
@@ -30,6 +66,74 @@ export interface AppCopy {
   floating: {
     label: string;
     aria: string;
+  };
+  announcement: {
+    badge: string;
+    text: string;
+    cta: string;
+    href: string;
+    close: string;
+  };
+  mobileBar: {
+    quote: string;
+    ask: string;
+  };
+  quiz: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    step: string;
+    back: string;
+    restart: string;
+    questions: { question: string; options: QuizOption[] }[];
+    resultTitle: string;
+    resultBody: string;
+    recommended: string;
+    cta: string;
+    /** WhatsApp summary; {business}, {goal}, {timeline} and {solutions} are replaced. */
+    message: string;
+  };
+  calculator: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    messages: string;
+    receipts: string;
+    perDay: string;
+    resultLabel: string;
+    hoursUnit: string;
+    days: string;
+    note: string;
+    cta: string;
+    /** {messages} and {receipts} are replaced. */
+    message: string;
+  };
+  servicePages: {
+    details: string;
+    benefitsTitle: string;
+    idealTitle: string;
+    projectTitle: string;
+    faqTitle: string;
+    ask: string;
+    pages: Record<ServicePageKey, ServicePage>;
+  };
+  chat: {
+    nudge: string;
+    nudgeClose: string;
+    open: string;
+    close: string;
+    title: string;
+    status: string;
+    greeting: string;
+    suggestions: string[];
+    placeholder: string;
+    send: string;
+    handoff: string;
+    /** WhatsApp message for the handoff; {query} is the visitor's first question. */
+    handoffMessage: string;
+    handoffWithQuery: string;
+    error: string;
+    rateLimited: string;
   };
   hero: {
     badge: string;
@@ -53,6 +157,8 @@ export interface AppCopy {
     intro: string;
     idealFor: string;
     cta: string;
+    popular: string;
+    groups: Record<'all' | ServiceGroup, string>;
     unsureTitle: string;
     unsureBody: string;
     unsureCta: string;
@@ -63,17 +169,22 @@ export interface AppCopy {
     eyebrow: string;
     title: string;
     intro: string;
+    cta: string;
+    /** WhatsApp message; {sector} is replaced with the card title. */
+    message: string;
     items: SectorItem[];
   };
   ia: {
     eyebrow: string;
     title: string;
     intro: string;
-    discoveryLabel: string;
     discoveryBody: string;
     discoveryCta: string;
     discoveryHref: string;
     items: AiCapability[];
+    tryNow: string;
+    demoBusiness: string;
+    demos: { label: string; icon: string; messages: ChatMessage[] }[];
   };
   process: {
     eyebrow: string;
@@ -108,6 +219,15 @@ export interface AppCopy {
     cta: string;
     href: string;
     items: FaqItem[];
+    askAiTitle: string;
+    askAiBody: string;
+    askAiCta: string;
+  };
+  finalCta: {
+    title: string;
+    highlight: string;
+    body: string;
+    secondary: string;
   };
   contact: {
     eyebrow: string;
@@ -121,10 +241,10 @@ export interface AppCopy {
     companyPlaceholder: string;
     optional: string;
     solution: string;
-    solutionPlaceholder: string;
     description: string;
     descriptionPlaceholder: string;
     submit: string;
+    reassurance: string;
     success: string;
     message: QuoteTemplate;
     channels: ContactChannel[];

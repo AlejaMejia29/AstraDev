@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { About } from './sections/about/about';
+import { Calculadora } from './sections/calculadora/calculadora';
 import { Contacto } from './sections/contacto/contacto';
+import { Cotizador } from './sections/cotizador/cotizador';
+import { CtaFinal } from './sections/cta-final/cta-final';
 import { Hero } from './sections/hero/hero';
 import { Ia } from './sections/ia/ia';
 import { Preguntas } from './sections/preguntas/preguntas';
@@ -11,7 +14,20 @@ import { Servicios } from './sections/servicios/servicios';
 
 @Component({
   selector: 'app-inicio',
-  imports: [Hero, Servicios, Sectores, Ia, Proceso, Proyectos, About, Preguntas, Contacto],
+  imports: [
+    Hero,
+    Servicios,
+    Cotizador,
+    Sectores,
+    Ia,
+    Calculadora,
+    Proceso,
+    Proyectos,
+    About,
+    CtaFinal,
+    Preguntas,
+    Contacto,
+  ],
   templateUrl: './inicio.html',
   styles: ``,
 })

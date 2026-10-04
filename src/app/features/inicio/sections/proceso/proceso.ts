@@ -9,4 +9,5 @@ import { Reveal } from '../../../../shared/ui/reveal/reveal';
 })
 export class Proceso {
   protected readonly i18n = inject(I18nService);
+  protected readonly icons = ['forum', 'description', 'construction', 'rocket_launch'];
 }

@@ -2,13 +2,12 @@
   <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
     <div class="grid grid-cols-1 items-center gap-gutter lg:grid-cols-12">
       <div appReveal class="flex flex-col lg:col-span-6">
-        <div class="mb-space-sm inline-flex items-center gap-space-xs text-secondary">
-          <span class="material-symbols-outlined text-label-md">verified</span>
-          <span class="font-label-sm text-label-sm uppercase tracking-wider">
-            {{ i18n.copy().about.eyebrow }}
-          </span>
-        </div>
-        <h2 class="mb-space-md font-headline-lg text-headline-lg font-bold tracking-tight text-primary">
+        <span class="eyebrow mb-space-md self-start">
+          {{ i18n.copy().about.eyebrow }}
+        </span>
+        <h2
+          class="mb-space-md font-headline-lg text-headline-lg font-bold tracking-tight text-primary"
+        >
           {{ i18n.copy().about.title }}
         </h2>
         <p class="mb-space-lg font-body-lg text-body-lg text-on-surface-variant">
@@ -20,16 +19,20 @@
             <div
               appReveal
               [revealDelay]="i * 80"
-              class="flex items-start gap-space-md rounded bg-surface-container p-space-md transition duration-300 hover:bg-surface-container-high"
+              class="card flex items-start gap-space-md p-space-md"
             >
               <div
-                class="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-surface-container-high text-primary"
+                class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/12 text-accent"
               >
-                <span class="material-symbols-outlined text-label-lg">{{ pillar.icon }}</span>
+                <span class="material-symbols-outlined text-[18px]">{{ pillar.icon }}</span>
               </div>
               <div>
-                <h3 class="mb-1 font-headline-sm text-headline-sm text-primary">{{ pillar.title }}</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant">{{ pillar.description }}</p>
+                <h3 class="mb-1 font-headline-sm text-headline-sm text-primary">
+                  {{ pillar.title }}
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  {{ pillar.description }}
+                </p>
               </div>
             </div>
           }
@@ -37,20 +40,29 @@
       </div>
 
       <div appReveal [revealDelay]="120" class="flex flex-col items-center lg:col-span-6">
-        <div class="mb-space-lg flex w-full max-w-lg justify-center rounded bg-surface-container-low p-space-xl">
-          <app-brand-logo variant="stacked" imgClass="w-56 sm:w-72 h-auto" />
+        <div
+          class="card-static relative mb-space-lg flex w-full max-w-lg items-center justify-center overflow-hidden p-space-xl"
+        >
+          <div class="bg-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+          <div
+            class="pointer-events-none absolute h-64 w-64 rounded-full bg-gradient-to-br from-brand-from/35 to-brand-to/35 blur-3xl motion-safe:animate-float"
+            aria-hidden="true"
+          ></div>
+          <app-brand-logo class="relative" variant="stacked" imgClass="w-56 sm:w-72 h-auto" />
         </div>
-        <div class="w-full max-w-lg rounded bg-surface-container-low p-space-lg">
-          <span class="mb-space-sm block text-center font-label-sm text-label-sm uppercase tracking-widest text-outline">
+        <div class="card-static w-full max-w-lg p-space-lg">
+          <span
+            class="mb-space-md block text-center font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant"
+          >
             {{ i18n.copy().about.stack }}
           </span>
-          <div class="grid grid-cols-2 gap-space-xs text-center font-label-sm text-label-sm sm:grid-cols-3">
+          <div class="flex flex-wrap justify-center gap-space-xs">
             @for (item of stack; track item) {
-              <div
-                class="rounded bg-surface-container p-space-sm text-on-surface transition-colors hover:bg-surface-container-high"
+              <span
+                class="rounded-full border border-outline-variant bg-surface-container px-space-md py-space-xs font-label-md text-label-md text-on-surface transition duration-300 hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent"
               >
                 {{ item }}
-              </div>
+              </span>
             }
           </div>
         </div>

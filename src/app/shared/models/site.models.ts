@@ -3,8 +3,15 @@ export interface NavLink {
   fragment: string;
 }
 
+export type ServiceGroup = 'manage' | 'sell' | 'automate';
+
 export interface ServiceItem {
   icon: string;
+  group: ServiceGroup;
+  /** Highlighted with a "most requested" badge. */
+  popular?: boolean;
+  /** Dedicated landing page (e.g. 'pos' -> /pos), when there is one. */
+  page?: 'pos' | 'bot' | 'ia';
   title: string;
   description: string;
   idealFor: string;

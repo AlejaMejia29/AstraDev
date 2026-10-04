@@ -35,11 +35,11 @@ interface Star {
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background: #0b0b0d;
+      background: #090a10;
     }
 
     :host.light {
-      background: #f4f2f5;
+      background: #eef1f7;
     }
 
     .starfield-canvas {

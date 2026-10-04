@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { AnalyticsService } from '../../../../core/analytics/analytics.service';
 import { I18nService } from '../../../../core/i18n/i18n.service';
 import { buildQuoteMessage, whatsappUrl } from '../../../../shared/utils/whatsapp';
 import { Reveal } from '../../../../shared/ui/reveal/reveal';
@@ -12,6 +13,19 @@ import { Reveal } from '../../../../shared/ui/reveal/reveal';
 export class Contacto {
   protected readonly i18n = inject(I18nService);
   protected readonly formSent = signal(false);
+  private readonly analytics = inject(AnalyticsService);
+
+  protected readonly solutionIcons: Record<string, string> = {
+    pos: 'point_of_sale',
+    erp: 'inventory_2',
+    crm: 'groups',
+    bot: 'chat',
+    ai: 'neurology',
+    saas: 'cloud',
+    web: 'web',
+    custom: 'settings_suggest',
+    unsure: 'help',
+  };
 
   protected onSubmit(event: Event): void {
     event.preventDefault();
@@ -33,6 +47,7 @@ export class Contacto {
     );
 
     const url = whatsappUrl(message);
+    this.analytics.trackWhatsapp('formulario-contacto');
     const opened = window.open(url, '_blank');
     if (opened) {
       opened.opener = null;
