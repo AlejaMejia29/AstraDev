@@ -1,122 +1,189 @@
+import { whatsappUrl } from '../../shared/utils/whatsapp';
 import { AppCopy, Lang } from './i18n.models';
 
 export const TRANSLATIONS: Record<Lang, AppCopy> = {
   es: {
-    title: 'AstraDev — Software e Inteligencia Artificial',
-    quote: 'Hablemos',
+    title: 'AstraDev — Software a la medida e Inteligencia Artificial',
     nav: [
-      { label: 'Inicio', fragment: 'inicio' },
-      { label: 'Servicios', fragment: 'servicios' },
+      { label: 'Soluciones', fragment: 'servicios' },
       { label: 'IA', fragment: 'ia' },
-      { label: 'Nosotros', fragment: 'sobre-nosotros' },
+      { label: 'Proceso', fragment: 'proceso' },
       { label: 'Proyectos', fragment: 'proyectos' },
+      { label: 'Preguntas', fragment: 'preguntas' },
       { label: 'Contacto', fragment: 'contacto' },
     ],
     header: {
-      quote: 'Hablemos',
+      quote: 'Cotizar',
       openMenu: 'Abrir menú',
       language: 'Cambiar idioma',
       theme: 'Cambiar tema',
     },
     whatsapp: {
-      href: 'https://wa.me/573118221480',
-      phone: '311 822 1480',
-      label: 'Hablemos de tu proyecto',
+      href: whatsappUrl('Hola Astra Dev, quiero cotizar un proyecto.'),
+      phone: '314 872 1707',
+    },
+    floating: {
+      label: 'Cotizar por WhatsApp',
+      aria: 'Escribir a Astra Dev por WhatsApp',
     },
     hero: {
-      badge: 'Software para empresas que buscan más',
-      title: 'Todo tu negocio, en un solo lugar.',
-      subtitle: 'Ideas que construyen futuro.',
-      body: 'Una solución para gestionar ventas, productos, clientes y operaciones de forma simple. Desarrollamos software a la medida para hacer crecer tu negocio.',
-      ctaPrimary: 'Hablemos de tu proyecto',
-      ctaSecondary: 'Ver soluciones de IA',
+      badge: 'Astra Dev · Ideas que construyen futuro',
+      title: 'Software a la medida que',
+      highlight: 'hace crecer tu negocio.',
+      body: 'Creamos sistemas POS, ERP y CRM, plataformas SaaS, páginas web y bots de WhatsApp con inteligencia artificial. Todo pensado para la forma en que trabaja tu empresa.',
+      ctaPrimary: 'Cotizar por WhatsApp',
+      ctaSecondary: 'Ver soluciones',
+      trust: [
+        'Te explicamos todo sin tecnicismos',
+        'Entregas por etapas',
+        'Acompañamiento después de lanzar',
+      ],
+      chat: {
+        name: 'Asistente de tu tienda',
+        status: 'en línea',
+        messages: [
+          { from: 'client', text: 'Hola, ¿tienen los tenis blancos en talla 40?' },
+          {
+            from: 'business',
+            text: '¡Hola! Sí, nos quedan 3 pares. Cuestan $189.900. ¿Te aparto unos?',
+          },
+          { from: 'client', text: 'Sí, por favor. Paso hoy en la tarde.' },
+          {
+            from: 'business',
+            text: 'Listo, quedaron a tu nombre hasta las 7:00 p. m. ¡Te esperamos!',
+          },
+        ],
+        notificationTitle: 'Venta apartada en tu POS',
+        notificationBody: 'El inventario se actualizó solo.',
+      },
     },
-    stats: [
-      {
-        label: 'Todo junto',
-        value: '1 lugar',
-        detail: 'Ventas, inventario, clientes y reportes en un solo sistema.',
-      },
-      {
-        label: 'Siempre listo',
-        value: '24/7',
-        detail: 'Tu operación no se apaga: clientes y equipo con información a cualquier hora.',
-      },
-      {
-        label: 'Cerca de ti',
-        value: 'WhatsApp',
-        detail: 'Hablamos directo y te proponemos el siguiente paso.',
-      },
-      {
-        label: 'A tu ritmo',
-        value: 'Crece',
-        detail: 'Empiezas con lo de hoy y ampliamos cuando el negocio lo pida.',
-      },
-    ],
     services: {
-      eyebrow: 'Qué hacemos',
-      title: 'Software para hacer crecer tu negocio',
+      eyebrow: 'Soluciones',
+      title: 'Todo el software que tu negocio necesita',
       intro:
-        'Desarrollamos aplicaciones y sistemas a la medida que optimizan procesos, conectan a tu equipo y generan resultados.',
-      prev: 'Servicio anterior',
-      next: 'Siguiente servicio',
+        'Elige por dónde empezar. Cada solución se adapta a tu negocio y puede crecer con él.',
+      idealFor: 'Ideal para',
+      cta: 'Cotizar',
+      unsureTitle: '¿No sabes cuál necesitas?',
+      unsureBody: 'Cuéntanos qué quieres resolver y te recomendamos la mejor opción.',
+      unsureCta: 'Pedir asesoría',
+      unsureHref: whatsappUrl(
+        'Hola Astra Dev, quiero mejorar mi negocio con software pero no sé por dónde empezar.',
+      ),
       items: [
         {
           icon: 'point_of_sale',
-          title: 'Ventas y punto de venta',
+          title: 'Sistema POS',
           description:
-            'Agiliza tus ventas en tienda y en línea, con control claro del día a día. Cobras más rápido, ves qué se vendió y evitas perder tickets por desorden en caja o en la tienda.',
-          tags: ['POS', 'Facturación'],
-          image: '/services/pos.jpg',
-          imageAlt: 'Punto de venta en un comercio',
+            'Cobra rápido, factura y controla la caja. Sabes qué se vendió cada día sin hojas de cálculo.',
+          idealFor: 'tiendas, restaurantes y ferreterías',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar un sistema POS.'),
         },
         {
           icon: 'inventory_2',
-          title: 'Inventario y productos',
+          title: 'ERP',
           description:
-            'Controla tu stock en tiempo real y evita quiebres o excesos. Sabes qué hay, qué se mueve y cuándo reponer, sin adivinar ni depender de una hoja de cálculo.',
-          tags: ['Stock', 'Alertas'],
-          image: '/services/inventory.jpg',
-          imageAlt: 'Control de inventario y mercancía',
+            'Inventario, compras, ventas y reportes conectados en un solo sistema para toda la empresa.',
+          idealFor: 'distribuidoras y empresas en crecimiento',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar un ERP.'),
+        },
+        {
+          icon: 'groups',
+          title: 'CRM',
+          description:
+            'Organiza clientes y oportunidades. Haz seguimiento a cada venta para que ninguna se pierda.',
+          idealFor: 'equipos comerciales y empresas de servicios',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar un CRM.'),
+        },
+        {
+          icon: 'chat',
+          title: 'Bots de WhatsApp',
+          description:
+            'Un asistente con IA que responde, agenda y vende por WhatsApp a cualquier hora del día.',
+          idealFor: 'negocios que reciben muchos mensajes',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar un bot de WhatsApp.'),
+        },
+        {
+          icon: 'neurology',
+          title: 'Integraciones de IA',
+          description:
+            'Conectamos inteligencia artificial a tus sistemas para automatizar tareas y responder con tu propia información.',
+          idealFor: 'empresas que quieren ahorrar tiempo',
+          href: whatsappUrl('Hola Astra Dev, quiero integrar inteligencia artificial en mi negocio.'),
+        },
+        {
+          icon: 'cloud',
+          title: 'Plataformas SaaS',
+          description:
+            'Convertimos tu idea en un producto web por suscripción, listo para recibir usuarios y cobrar.',
+          idealFor: 'emprendedores y startups',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar una plataforma SaaS.'),
         },
         {
           icon: 'web',
-          title: 'Desarrollo web',
+          title: 'Páginas web y landing pages',
           description:
-            'Sitios y plataformas modernas, rápidas y claras para tu empresa. Una web que explica lo que haces, recibe pedidos o clientes y se puede ampliar cuando el negocio crezca.',
-          tags: ['Web', 'SaaS'],
-          image: '/services/web.jpg',
-          imageAlt: 'Desarrollo de sitios y plataformas web',
+            'Sitios rápidos y claros que explican lo que haces y convierten visitas en clientes.',
+          idealFor: 'negocios que quieren vender en línea',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar una página web.'),
         },
         {
           icon: 'settings_suggest',
           title: 'Sistemas a la medida',
           description:
-            'Digitaliza tu operación: clientes, proveedores y reportes. Un sistema armado a tu forma de trabajar, para dejar de repetir tareas y tener la información en un solo lugar.',
-          tags: ['Integraciones', 'Reportes'],
-          image: '/services/custom.jpg',
-          imageAlt: 'Panel de un sistema a la medida',
+            '¿Tu proceso no encaja en ningún programa? Lo construimos a tu forma de trabajar.',
+          idealFor: 'operaciones con necesidades únicas',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar un sistema a la medida.'),
+        },
+      ],
+    },
+    sectors: {
+      eyebrow: 'Para quién',
+      title: '¿Tu negocio se parece a alguno de estos?',
+      intro: 'Estos son algunos de los problemas que resolvemos todos los días.',
+      items: [
+        {
+          icon: 'storefront',
+          title: 'Tiendas y comercios',
+          description: 'Caja, inventario y ventas en línea en un mismo lugar.',
         },
         {
-          icon: 'handshake',
-          title: 'Consultoría tecnológica',
-          description:
-            'Te acompañamos en cada etapa del proyecto, de la idea al resultado. Definimos qué construir, en qué orden y cómo medirlo, para que la tecnología sí le sirva al negocio.',
-          tags: ['Descubrimiento', 'Acompañamiento'],
-          image: '/services/consulting.jpg',
-          imageAlt: 'Reunión de consultoría tecnológica',
+          icon: 'restaurant',
+          title: 'Restaurantes',
+          description: 'Pedidos, domicilios y reservas que llegan por WhatsApp.',
+        },
+        {
+          icon: 'medical_services',
+          title: 'Clínicas y consultorios',
+          description: 'Agenda de citas y recordatorios automáticos para tus pacientes.',
+        },
+        {
+          icon: 'local_shipping',
+          title: 'Distribuidoras',
+          description: 'Pedidos, bodegas y cartera bajo control.',
+        },
+        {
+          icon: 'work',
+          title: 'Servicios profesionales',
+          description: 'Clientes, cotizaciones y seguimiento comercial ordenados.',
+        },
+        {
+          icon: 'rocket_launch',
+          title: 'Emprendedores',
+          description: 'Tu idea convertida en una app o plataforma lista para vender.',
         },
       ],
     },
     ia: {
       eyebrow: 'Inteligencia artificial',
-      title: 'Un asistente para tus clientes',
+      title: 'Un bot de WhatsApp que atiende por ti',
       intro:
         'La IA responde, agenda y explica lo que ofreces, en WhatsApp o en tu web, mientras tú operas el negocio.',
       discoveryLabel: 'Pruébalo con tu negocio',
       discoveryBody:
         'Te armamos una demo con tus preguntas reales. Escríbenos por WhatsApp y lo vemos juntos.',
-      discoveryCta: 'Solicitar una demostración',
+      discoveryCta: 'Pedir una demo',
+      discoveryHref: whatsappUrl('Hola Astra Dev, quiero una demo del bot de WhatsApp.'),
       items: [
         {
           icon: 'chat',
@@ -140,11 +207,38 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
         },
       ],
     },
+    process: {
+      eyebrow: 'Cómo trabajamos',
+      title: 'De la idea a tu sistema funcionando, en 4 pasos',
+      intro: 'Sin tecnicismos y sin sorpresas: siempre sabes en qué va tu proyecto.',
+      cta: 'Empezar con el paso 1',
+      steps: [
+        {
+          title: 'Hablamos',
+          description:
+            'Nos cuentas cómo funciona tu negocio y qué quieres resolver, por WhatsApp o en una llamada.',
+        },
+        {
+          title: 'Te proponemos',
+          description: 'Recibes una propuesta con alcance, etapas y precio antes de empezar.',
+        },
+        {
+          title: 'Construimos por etapas',
+          description:
+            'Ves avances reales, das tu opinión y empiezas a usar partes del sistema desde temprano.',
+        },
+        {
+          title: 'Lanzamos y acompañamos',
+          description:
+            'Lo ponemos en marcha con tu equipo y seguimos mejorándolo contigo.',
+        },
+      ],
+    },
     about: {
       eyebrow: 'Astra Dev',
       title: 'Convertimos ideas en resultados.',
       body: 'Tecnología para negocios reales. Acompañamos cada etapa del proyecto: desde la idea hasta un sistema que crece contigo y genera resultados medibles.',
-      stack: 'Stack tecnológico',
+      stack: 'Tecnologías que usamos',
       pillars: [
         {
           icon: 'verified',
@@ -164,92 +258,176 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
       ],
     },
     projects: {
-      eyebrow: 'Cómo lo resolvemos',
-      title: 'Soluciones que ya construimos',
+      eyebrow: 'Proyectos',
+      title: 'Lo que hemos construido',
       note: 'Hecho para negocios reales',
+      includes: 'Incluye',
       spec: 'Quiero algo así',
+      live: 'Ver sitio en vivo',
+      clientBadge: 'Cliente real',
+      productBadge: 'Producto propio',
+      offerBadge: 'Solución',
       items: [
         {
-          code: 'COMERCIO // 01',
-          sector: 'Ventas e inventario',
-          title: 'Punto de venta y control de stock',
+          kind: 'client',
+          code: 'SALUD // 01',
+          sector: 'Odontología · Armenia, Quindío',
+          title: 'Sitio web del Dr. Cristian Valencia',
           description:
-            'Un sistema para vender en tienda, controlar productos y ver el día a día sin hojas de cálculo.',
-          metrics: [
-            { label: 'Operación', value: '1 sistema' },
-            { label: 'Control', value: 'Tiempo real' },
-            { label: 'Equipo', value: 'Más claro' },
+            'Sitio web para el consultorio odontológico del Dr. Cristian Valencia. Presenta sus especialidades, muestra lo que dicen sus pacientes y facilita pedir una cita por WhatsApp.',
+          features: [
+            'Una página por especialidad',
+            'Testimonios de pacientes',
+            'Citas por WhatsApp y redes',
+            'SEO para aparecer en Google',
+            'Español e inglés',
+            'Diseño para celular',
           ],
-          tags: ['POS', 'Inventario', 'Reportes'],
-          image:
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuBFX-N3kJ6FDmbC6cy7hdnYkYhrolwaj0UznQ2ErSxId6j-rK3nDit8NuslsTfnMEYVP8PtNDYADqY_D68STbKWxQ4y8zBbaDqJgECFSMhJ4A6RWO8c8JAcshhCbvvn9uCr4oYrn48JcO309q8l94WT7H48VNOSuPxGd5ty4Xu-4tjSfF4xAECkAa63RyiPORqQvMme-TSC0sWLRbOaeCGsJwYcTR8508oa4PeCJFEZqv6M4W1OyZ0G',
-          imageAlt: 'Panel de ventas e inventario',
+          image: '/projects/dr-cristian-valencia-sitio.jpg',
+          imageAlt: 'Sitio web del Dr. Cristian Valencia en un portátil y un celular',
+          imageFit: 'contain',
+          liveUrl: 'https://drcristianvalencia.com/',
+          href: whatsappUrl(
+            'Hola Astra Dev, vi el sitio del Dr. Cristian Valencia y quiero una página web para mi negocio.',
+          ),
         },
         {
-          code: 'WEB // 02',
-          sector: 'Presencia digital',
-          title: 'Sitio y plataforma a la medida',
+          kind: 'product',
+          code: 'RESTAURANTES // 02',
+          sector: 'Restaurantes · Producto SaaS',
+          title: 'Table Assistant',
           description:
-            'Una web rápida para mostrar servicios, recibir pedidos o gestionar clientes desde un solo lugar.',
-          metrics: [
-            { label: 'Canal', value: 'Web' },
-            { label: 'Enfoque', value: 'Tu negocio' },
-            { label: 'Entrega', value: 'Por etapas' },
+            'Nuestro asistente con IA para restaurantes. Desde la mesa, el cliente explora el menú, pide recomendaciones y hace su pedido sin esperar al mesero. Responde solo con el menú real del restaurante, sin inventar platos ni precios.',
+          features: [
+            'Mesero virtual con IA',
+            'Responde solo con tu menú real',
+            'Menú digital por categorías',
+            'Pedidos desde la mesa',
+            'Recomendaciones según los gustos',
+            'Varios restaurantes y mesas',
           ],
-          tags: ['Angular', 'TypeScript', 'SaaS'],
-          image:
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuC85pcLKIeRZLUskwHw0THbGczAJ6VbZkRKepKRojq1MHCzRG6xtryhYHg8DcNa2kewAjmHbJziPxvWsvGKC1OZhXAZBz09nZQfzHEP_gw-AHXfZefo0OhVUP9NBwT_xIO-cpA47gLkBVnOcTF04ZcAOb-Gx9Ux5RJ-wQocvn7DbNhlVizWoTgh7u4Xu7mHAZJFNJYCVQeuBZ5dg2geAhrRwufngLGdMqk3Gp6fZ56LXpXgsWjLZ5WY',
-          imageAlt: 'Plataforma web para empresas',
+          image: '/projects/table-assistant.jpg',
+          imageAlt: 'Table Assistant en un portátil y un celular mostrando el menú y el asistente de mesa',
+          href: whatsappUrl('Hola Astra Dev, me interesa Table Assistant para mi restaurante.'),
         },
         {
+          kind: 'offer',
           code: 'IA // 03',
           sector: 'Atención al cliente',
-          title: 'Asistente disponible 24/7',
+          title: 'Chatbot con IA para WhatsApp y tu web',
           description:
-            'Un asistente que responde, agenda y explica tus servicios por WhatsApp o en tu web.',
-          metrics: [
-            { label: 'Horario', value: '24/7' },
-            { label: 'Canal', value: 'WhatsApp' },
-            { label: 'Resultado', value: 'Menos espera' },
+            'Un asistente que atiende a tus clientes a cualquier hora con la información real de tu negocio. Usa la misma tecnología de Table Assistant.',
+          features: [
+            'Responde preguntas frecuentes 24/7',
+            'Usa solo la información de tu negocio',
+            'Agenda citas y toma pedidos',
+            'Funciona en WhatsApp o en tu web',
+            'Pasa a una persona cuando hace falta',
+            'Se conecta a tu inventario o agenda',
           ],
-          tags: ['IA', 'WhatsApp', 'Automatización'],
-          image:
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuDOmEhntbpzAnt7n0ZlwXygDXMkwkwVrZbyC2nQUsib9AHMwlWpgAN4blQ4z5Z3G0mOKni4nB4FO-Df5X--n37rUHkm8Ivvhsh4kBsxodIMpBMPLz3TpvmdCMwf2fmvjf2JtMmQXLGx6DbUqbeZPRGsIkjeE_c8HSjhQCry0obsTx1iUe_Lln4gTsgGP1zHHyPvCfkSWfv-hXLfTspq2uFi46PvMpuecso-J-qrGDw6LvefVLGF3gTH',
-          imageAlt: 'Asistente de atención con inteligencia artificial',
+          image: '/projects/chatbot-whatsapp.jpg',
+          imageAlt:
+            'Celular con un chat de WhatsApp de Astra Dev respondiendo sobre un punto de venta',
+          imageAnchor: 'center',
+          href: whatsappUrl('Hola Astra Dev, quiero un chatbot con IA para mi negocio.'),
+        },
+        {
+          kind: 'offer',
+          code: 'COMERCIO // 04',
+          sector: 'Ventas e inventario',
+          title: 'Sistema POS con inventario',
+          description:
+            'Un sistema para vender en tienda, controlar tus productos y ver el día a día sin hojas de cálculo.',
+          features: [
+            'Caja y facturación',
+            'Inventario en tiempo real',
+            'Reportes del día',
+            'Alertas de productos por agotarse',
+            'Varios usuarios y cajas',
+            'Funciona en computador y tablet',
+          ],
+          image: '/projects/sistema-pos.jpg',
+          imageAlt:
+            'Cajera usando el punto de venta de Astra Dev, con inventario, total y botón de cobro',
+          imageAnchor: 'right',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar un sistema POS con inventario.'),
+        },
+      ],
+    },
+    faq: {
+      eyebrow: 'Preguntas frecuentes',
+      title: 'Lo que nos preguntan antes de empezar',
+      intro: '¿Tienes otra duda? Escríbenos y te respondemos.',
+      cta: 'Preguntar por WhatsApp',
+      href: whatsappUrl('Hola Astra Dev, tengo una pregunta.'),
+      items: [
+        {
+          question: '¿Cuánto cuesta un sistema?',
+          answer:
+            'Depende de lo que necesites: una página web no cuesta lo mismo que un ERP. Después de hablar contigo te enviamos una propuesta con el precio y las etapas, antes de empezar cualquier trabajo.',
+        },
+        {
+          question: '¿Cuánto tiempo tarda?',
+          answer:
+            'Depende del alcance. Una página web se entrega mucho más rápido que un sistema completo. En la propuesta te damos las fechas de cada etapa.',
+        },
+        {
+          question: '¿Puedo empezar con algo pequeño?',
+          answer:
+            'Sí. Puedes empezar con lo que necesitas hoy, por ejemplo un POS o un bot, y ampliarlo cuando tu negocio lo pida.',
+        },
+        {
+          question: '¿Se conecta con lo que ya uso?',
+          answer:
+            'En la mayoría de los casos, sí. Podemos conectar tu página, tu inventario, tu agenda o WhatsApp para que la información no quede regada.',
+        },
+        {
+          question: '¿El bot de WhatsApp reemplaza a mi equipo?',
+          answer:
+            'No. Responde lo frecuente a cualquier hora y le pasa la conversación a una persona cuando hace falta.',
+        },
+        {
+          question: '¿Qué pasa después de la entrega?',
+          answer:
+            'No entregamos y desaparecemos. Te acompañamos para resolver dudas, ajustar lo que haga falta y seguir mejorando.',
         },
       ],
     },
     contact: {
-      eyebrow: 'Hablemos',
-      title: 'Hablemos de tu proyecto.',
-      body: 'Escríbenos por WhatsApp o déjanos tus datos. Convertimos tus ideas en un sistema que crece contigo.',
-      formTitle: 'Cuéntanos tu necesidad',
-      formIntro: '¿Necesitas web, un sistema de gestión o IA para atender clientes?',
-      name: 'Nombre completo *',
-      namePlaceholder: 'Tu nombre',
-      company: 'Empresa *',
-      companyPlaceholder: 'Tu negocio o empresa',
-      email: 'Email *',
-      solution: 'Tipo de solución *',
-      solutionPlaceholder: 'Seleccionar alcance...',
-      budget: 'Presupuesto estimado',
-      description: 'Descripción del proyecto *',
+      eyebrow: 'Contacto',
+      title: 'Cuéntanos qué necesitas.',
+      body: 'Llena estos datos y se abre WhatsApp con tu mensaje listo para enviar. También puedes escribirnos o llamarnos directamente.',
+      formTitle: 'Pide tu cotización',
+      formIntro: 'Toma menos de un minuto.',
+      name: 'Tu nombre',
+      namePlaceholder: 'Ej: Laura Gómez',
+      company: 'Empresa o negocio',
+      companyPlaceholder: 'Ej: Ferretería El Tornillo',
+      optional: 'opcional',
+      solution: '¿Qué necesitas?',
+      solutionPlaceholder: 'Elige una opción',
+      description: 'Cuéntanos un poco más',
       descriptionPlaceholder:
-        'Qué quieres lograr: ventas, inventario, atención al cliente o automatización...',
-      submit: 'Enviar y hablar por WhatsApp',
-      success: 'Recibido. Te escribimos pronto para agendar una demostración.',
+        'Ej: tengo una tienda y quiero controlar el inventario y vender por WhatsApp.',
+      submit: 'Continuar en WhatsApp',
+      success: 'Abrimos WhatsApp con tu mensaje. Solo falta que lo envíes.',
+      message: {
+        greeting: 'Hola Astra Dev, soy {name}',
+        company: ' de {company}',
+        interest: 'Me interesa: {solution}.',
+      },
       channels: [
         {
           icon: 'chat',
           label: 'WhatsApp',
-          value: '311 822 1480',
-          href: 'https://wa.me/573118221480',
+          value: '314 872 1707',
+          href: whatsappUrl('Hola Astra Dev, quiero cotizar un proyecto.'),
         },
         {
           icon: 'call',
           label: 'Teléfono',
-          value: '311 822 1480',
-          href: 'tel:+573118221480',
+          value: '314 828 1480',
+          href: 'tel:+573148281480',
         },
         {
           icon: 'alternate_email',
@@ -259,144 +437,208 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
         },
       ],
       solutions: [
-        { value: 'web', label: 'Desarrollo web / plataforma' },
-        { value: 'pos', label: 'Ventas, inventario y operación' },
-        { value: 'ai', label: 'IA y atención automatizada' },
+        { value: 'pos', label: 'Sistema POS' },
+        { value: 'erp', label: 'ERP' },
+        { value: 'crm', label: 'CRM' },
+        { value: 'bot', label: 'Bot de WhatsApp' },
+        { value: 'ai', label: 'Integración de IA' },
+        { value: 'saas', label: 'Plataforma SaaS' },
+        { value: 'web', label: 'Página web o landing page' },
         { value: 'custom', label: 'Sistema a la medida' },
-        { value: 'consulting', label: 'Consultoría tecnológica' },
-      ],
-      budgets: [
-        { value: 'piloto', label: 'Piloto / demo' },
-        { value: 'producto', label: 'Producto' },
-        { value: 'plataforma', label: 'Plataforma' },
-        { value: 'definir', label: 'A definir' },
+        { value: 'unsure', label: 'Aún no sé, quiero asesoría' },
       ],
     },
     footer: {
       blurb:
-        'Software a la medida e inteligencia artificial para negocios reales. Diseñado para crecer contigo.',
+        'Software a la medida e inteligencia artificial para negocios reales. Ideas que construyen futuro.',
       explore: 'Explorar',
+      solutions: 'Soluciones',
       contact: 'Contacto',
       rights: 'Todos los derechos reservados.',
-      proposal: 'Hablemos de tu proyecto',
+      proposal: 'Cotizar por WhatsApp',
     },
   },
   en: {
-    title: 'AstraDev — Software and Artificial Intelligence',
-    quote: "Let's talk",
+    title: 'AstraDev — Custom Software and Artificial Intelligence',
     nav: [
-      { label: 'Home', fragment: 'inicio' },
-      { label: 'Services', fragment: 'servicios' },
+      { label: 'Solutions', fragment: 'servicios' },
       { label: 'AI', fragment: 'ia' },
-      { label: 'About', fragment: 'sobre-nosotros' },
+      { label: 'Process', fragment: 'proceso' },
       { label: 'Work', fragment: 'proyectos' },
+      { label: 'FAQ', fragment: 'preguntas' },
       { label: 'Contact', fragment: 'contacto' },
     ],
     header: {
-      quote: "Let's talk",
+      quote: 'Get a quote',
       openMenu: 'Open menu',
       language: 'Switch language',
       theme: 'Switch theme',
     },
     whatsapp: {
-      href: 'https://wa.me/573118221480',
-      phone: '311 822 1480',
-      label: "Let's talk about your project",
+      href: whatsappUrl('Hi Astra Dev, I would like a quote for a project.'),
+      phone: '314 872 1707',
+    },
+    floating: {
+      label: 'Quote on WhatsApp',
+      aria: 'Message Astra Dev on WhatsApp',
     },
     hero: {
-      badge: 'Software for companies that want more',
-      title: 'Your whole business, in one place.',
-      subtitle: 'Ideas that build the future.',
-      body: 'A solution to manage sales, products, customers, and operations — simply. We build custom software that helps your business grow.',
-      ctaPrimary: "Let's talk about your project",
-      ctaSecondary: 'See AI solutions',
+      badge: 'Astra Dev · Ideas that build the future',
+      title: 'Custom software that',
+      highlight: 'grows your business.',
+      body: 'We build POS, ERP, and CRM systems, SaaS platforms, websites, and AI-powered WhatsApp bots. All designed around the way your company works.',
+      ctaPrimary: 'Get a quote on WhatsApp',
+      ctaSecondary: 'See solutions',
+      trust: [
+        'We explain everything in plain words',
+        'Delivered in stages',
+        'Support after launch',
+      ],
+      chat: {
+        name: 'Your store assistant',
+        status: 'online',
+        messages: [
+          { from: 'client', text: 'Hi, do you have the white sneakers in size 9?' },
+          {
+            from: 'business',
+            text: 'Hi! Yes, we have 3 pairs left. They are $59. Want me to hold a pair?',
+          },
+          { from: 'client', text: 'Yes, please. I’ll stop by this afternoon.' },
+          {
+            from: 'business',
+            text: 'Done, they’re on hold under your name until 7:00 p.m. See you!',
+          },
+        ],
+        notificationTitle: 'Sale held in your POS',
+        notificationBody: 'Inventory updated automatically.',
+      },
     },
-    stats: [
-      {
-        label: 'All together',
-        value: '1 place',
-        detail: 'Sales, inventory, customers, and reports in a single system.',
-      },
-      {
-        label: 'Always ready',
-        value: '24/7',
-        detail: 'Your operation stays on: customers and team can get answers at any hour.',
-      },
-      {
-        label: 'Close to you',
-        value: 'WhatsApp',
-        detail: 'We talk directly and propose the next step.',
-      },
-      {
-        label: 'At your pace',
-        value: 'Grow',
-        detail: 'Start with what you need today and expand when the business asks for more.',
-      },
-    ],
     services: {
-      eyebrow: 'What we do',
-      title: 'Software that grows your business',
-      intro:
-        'We build custom apps and systems that optimize processes, connect your team, and deliver results.',
-      prev: 'Previous service',
-      next: 'Next service',
+      eyebrow: 'Solutions',
+      title: 'All the software your business needs',
+      intro: 'Pick where to start. Every solution adapts to your business and grows with it.',
+      idealFor: 'Ideal for',
+      cta: 'Get a quote',
+      unsureTitle: 'Not sure which one you need?',
+      unsureBody: 'Tell us what you want to solve and we’ll recommend the best option.',
+      unsureCta: 'Ask for advice',
+      unsureHref: whatsappUrl(
+        'Hi Astra Dev, I want to improve my business with software but I am not sure where to start.',
+      ),
       items: [
         {
           icon: 'point_of_sale',
-          title: 'Sales and point of sale',
+          title: 'POS system',
           description:
-            'Speed up in-store and online sales with a clear view of every day. Charge faster, see what sold, and stop losing tickets to a messy till or store.',
-          tags: ['POS', 'Billing'],
-          image: '/services/pos.jpg',
-          imageAlt: 'Point of sale in a store',
+            'Charge fast, issue invoices, and control the till. Know what sold every day without spreadsheets.',
+          idealFor: 'stores, restaurants, and hardware shops',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a POS system.'),
         },
         {
           icon: 'inventory_2',
-          title: 'Inventory and products',
+          title: 'ERP',
           description:
-            'Track stock in real time and avoid shortages or excess. You know what you have, what moves, and when to restock — without guessing or a spreadsheet.',
-          tags: ['Stock', 'Alerts'],
-          image: '/services/inventory.jpg',
-          imageAlt: 'Inventory and merchandise control',
+            'Inventory, purchasing, sales, and reports connected in a single system for the whole company.',
+          idealFor: 'distributors and growing companies',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for an ERP.'),
+        },
+        {
+          icon: 'groups',
+          title: 'CRM',
+          description:
+            'Organize customers and opportunities. Follow up on every deal so none slips away.',
+          idealFor: 'sales teams and service companies',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a CRM.'),
+        },
+        {
+          icon: 'chat',
+          title: 'WhatsApp bots',
+          description:
+            'An AI assistant that answers, books, and sells on WhatsApp at any hour of the day.',
+          idealFor: 'businesses that get lots of messages',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a WhatsApp bot.'),
+        },
+        {
+          icon: 'neurology',
+          title: 'AI integrations',
+          description:
+            'We connect artificial intelligence to your systems to automate tasks and answer with your own data.',
+          idealFor: 'companies that want to save time',
+          href: whatsappUrl('Hi Astra Dev, I would like to add artificial intelligence to my business.'),
+        },
+        {
+          icon: 'cloud',
+          title: 'SaaS platforms',
+          description:
+            'We turn your idea into a subscription web product, ready to onboard users and charge them.',
+          idealFor: 'founders and startups',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a SaaS platform.'),
         },
         {
           icon: 'web',
-          title: 'Web development',
+          title: 'Websites and landing pages',
           description:
-            'Modern, fast, clear sites and platforms for your company. A website that explains what you do, takes orders or leads, and can grow when the business does.',
-          tags: ['Web', 'SaaS'],
-          image: '/services/web.jpg',
-          imageAlt: 'Websites and platforms in development',
+            'Fast, clear sites that explain what you do and turn visitors into customers.',
+          idealFor: 'businesses that want to sell online',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a website.'),
         },
         {
           icon: 'settings_suggest',
           title: 'Custom systems',
           description:
-            'Digitize your operation: customers, suppliers, and reports. A system built around how you actually work, so you stop repeating tasks and keep information in one place.',
-          tags: ['Integrations', 'Reports'],
-          image: '/services/custom.jpg',
-          imageAlt: 'Custom system dashboard',
+            'Does your process not fit any off-the-shelf tool? We build it around the way you work.',
+          idealFor: 'operations with unique needs',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a custom system.'),
+        },
+      ],
+    },
+    sectors: {
+      eyebrow: 'Who it’s for',
+      title: 'Does your business look like one of these?',
+      intro: 'These are some of the problems we solve every day.',
+      items: [
+        {
+          icon: 'storefront',
+          title: 'Stores and retail',
+          description: 'Till, inventory, and online sales in one place.',
         },
         {
-          icon: 'handshake',
-          title: 'Technology consulting',
-          description:
-            'We stay with you at every stage, from the idea to the outcome. We define what to build, in what order, and how to measure it, so the technology actually serves the business.',
-          tags: ['Discovery', 'Support'],
-          image: '/services/consulting.jpg',
-          imageAlt: 'Technology consulting meeting',
+          icon: 'restaurant',
+          title: 'Restaurants',
+          description: 'Orders, deliveries, and bookings that arrive on WhatsApp.',
+        },
+        {
+          icon: 'medical_services',
+          title: 'Clinics and practices',
+          description: 'Appointment booking and automatic reminders for your patients.',
+        },
+        {
+          icon: 'local_shipping',
+          title: 'Distributors',
+          description: 'Orders, warehouses, and receivables under control.',
+        },
+        {
+          icon: 'work',
+          title: 'Professional services',
+          description: 'Clients, quotes, and sales follow-up kept in order.',
+        },
+        {
+          icon: 'rocket_launch',
+          title: 'Founders',
+          description: 'Your idea turned into an app or platform ready to sell.',
         },
       ],
     },
     ia: {
       eyebrow: 'Artificial intelligence',
-      title: 'An assistant for your customers',
+      title: 'A WhatsApp bot that serves customers for you',
       intro:
         'AI answers, books, and explains what you offer — on WhatsApp or your website — while you run the business.',
       discoveryLabel: 'Try it with your business',
       discoveryBody:
         'We can build a demo with your real questions. Write us on WhatsApp and we’ll look at it together.',
       discoveryCta: 'Request a demo',
+      discoveryHref: whatsappUrl('Hi Astra Dev, I would like a demo of the WhatsApp bot.'),
       items: [
         {
           icon: 'chat',
@@ -420,11 +662,37 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
         },
       ],
     },
+    process: {
+      eyebrow: 'How we work',
+      title: 'From idea to a working system, in 4 steps',
+      intro: 'No jargon and no surprises: you always know where your project stands.',
+      cta: 'Start with step 1',
+      steps: [
+        {
+          title: 'We talk',
+          description:
+            'You tell us how your business works and what you want to solve, on WhatsApp or a call.',
+        },
+        {
+          title: 'We propose',
+          description: 'You get a proposal with scope, stages, and price before any work starts.',
+        },
+        {
+          title: 'We build in stages',
+          description:
+            'You see real progress, give feedback, and start using parts of the system early.',
+        },
+        {
+          title: 'We launch and support',
+          description: 'We roll it out with your team and keep improving it with you.',
+        },
+      ],
+    },
     about: {
       eyebrow: 'Astra Dev',
       title: 'We turn ideas into results.',
       body: 'Technology for real businesses. We walk with you from the idea to a system that grows with you and delivers measurable results.',
-      stack: 'Technology stack',
+      stack: 'Technologies we use',
       pillars: [
         {
           icon: 'verified',
@@ -444,91 +712,174 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
       ],
     },
     projects: {
-      eyebrow: 'How we solve it',
-      title: 'Solutions we already build',
+      eyebrow: 'Work',
+      title: 'What we have built',
       note: 'Made for real businesses',
+      includes: 'Includes',
       spec: 'I want something like this',
+      live: 'See the live site',
+      clientBadge: 'Real client',
+      productBadge: 'Our product',
+      offerBadge: 'Solution',
       items: [
         {
-          code: 'RETAIL // 01',
-          sector: 'Sales and inventory',
-          title: 'Point of sale and stock control',
+          kind: 'client',
+          code: 'HEALTH // 01',
+          sector: 'Dentistry · Armenia, Colombia',
+          title: 'Website for Dr. Cristian Valencia',
           description:
-            'A system to sell in-store, track products, and see the day-to-day without spreadsheets.',
-          metrics: [
-            { label: 'Operation', value: '1 system' },
-            { label: 'Control', value: 'Real time' },
-            { label: 'Team', value: 'Clearer' },
+            'A website for Dr. Cristian Valencia’s dental practice. It presents his specialties, shows what his patients say, and makes it easy to book an appointment on WhatsApp.',
+          features: [
+            'A page for each specialty',
+            'Patient testimonials',
+            'Booking via WhatsApp and social media',
+            'SEO to show up on Google',
+            'Spanish and English',
+            'Built for mobile',
           ],
-          tags: ['POS', 'Inventory', 'Reports'],
-          image:
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuBFX-N3kJ6FDmbC6cy7hdnYkYhrolwaj0UznQ2ErSxId6j-rK3nDit8NuslsTfnMEYVP8PtNDYADqY_D68STbKWxQ4y8zBbaDqJgECFSMhJ4A6RWO8c8JAcshhCbvvn9uCr4oYrn48JcO309q8l94WT7H48VNOSuPxGd5ty4Xu-4tjSfF4xAECkAa63RyiPORqQvMme-TSC0sWLRbOaeCGsJwYcTR8508oa4PeCJFEZqv6M4W1OyZ0G',
-          imageAlt: 'Sales and inventory dashboard',
+          image: '/projects/dr-cristian-valencia-sitio.jpg',
+          imageAlt: 'Dr. Cristian Valencia’s website on a laptop and a phone',
+          imageFit: 'contain',
+          liveUrl: 'https://drcristianvalencia.com/',
+          href: whatsappUrl(
+            'Hi Astra Dev, I saw Dr. Cristian Valencia’s website and I would like a website for my business.',
+          ),
         },
         {
-          code: 'WEB // 02',
-          sector: 'Digital presence',
-          title: 'Custom site and platform',
+          kind: 'product',
+          code: 'RESTAURANTS // 02',
+          sector: 'Restaurants · SaaS product',
+          title: 'Table Assistant',
           description:
-            'A fast website to show services, take orders, or manage customers from one place.',
-          metrics: [
-            { label: 'Channel', value: 'Web' },
-            { label: 'Focus', value: 'Your business' },
-            { label: 'Delivery', value: 'In stages' },
+            'Our AI assistant for restaurants. From the table, guests browse the menu, ask for recommendations, and place their order without waiting for a server. It answers only with the restaurant’s real menu, never inventing dishes or prices.',
+          features: [
+            'AI virtual waiter',
+            'Answers only with your real menu',
+            'Digital menu by category',
+            'Orders from the table',
+            'Recommendations based on taste',
+            'Multiple restaurants and tables',
           ],
-          tags: ['Angular', 'TypeScript', 'SaaS'],
-          image:
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuC85pcLKIeRZLUskwHw0THbGczAJ6VbZkRKepKRojq1MHCzRG6xtryhYHg8DcNa2kewAjmHbJziPxvWsvGKC1OZhXAZBz09nZQfzHEP_gw-AHXfZefo0OhVUP9NBwT_xIO-cpA47gLkBVnOcTF04ZcAOb-Gx9Ux5RJ-wQocvn7DbNhlVizWoTgh7u4Xu7mHAZJFNJYCVQeuBZ5dg2geAhrRwufngLGdMqk3Gp6fZ56LXpXgsWjLZ5WY',
-          imageAlt: 'Business web platform',
+          image: '/projects/table-assistant.jpg',
+          imageAlt: 'Table Assistant on a laptop and a phone showing the menu and the table assistant',
+          href: whatsappUrl('Hi Astra Dev, I am interested in Table Assistant for my restaurant.'),
         },
         {
+          kind: 'offer',
           code: 'AI // 03',
           sector: 'Customer support',
-          title: 'Assistant available 24/7',
+          title: 'AI chatbot for WhatsApp and your website',
           description:
-            'An assistant that answers, books, and explains your services on WhatsApp or your website.',
-          metrics: [
-            { label: 'Hours', value: '24/7' },
-            { label: 'Channel', value: 'WhatsApp' },
-            { label: 'Result', value: 'Less waiting' },
+            'An assistant that serves your customers at any hour with your business’s real information. Built on the same technology as Table Assistant.',
+          features: [
+            'Answers frequent questions 24/7',
+            'Uses only your business’s information',
+            'Books appointments and takes orders',
+            'Works on WhatsApp or your website',
+            'Hands over to a person when needed',
+            'Connects to your inventory or calendar',
           ],
-          tags: ['AI', 'WhatsApp', 'Automation'],
-          image:
-            'https://lh3.googleusercontent.com/aida-public/AB6AXuDOmEhntbpzAnt7n0ZlwXygDXMkwkwVrZbyC2nQUsib9AHMwlWpgAN4blQ4z5Z3G0mOKni4nB4FO-Df5X--n37rUHkm8Ivvhsh4kBsxodIMpBMPLz3TpvmdCMwf2fmvjf2JtMmQXLGx6DbUqbeZPRGsIkjeE_c8HSjhQCry0obsTx1iUe_Lln4gTsgGP1zHHyPvCfkSWfv-hXLfTspq2uFi46PvMpuecso-J-qrGDw6LvefVLGF3gTH',
-          imageAlt: 'AI customer support assistant',
+          image: '/projects/chatbot-whatsapp.jpg',
+          imageAlt: 'Phone showing an Astra Dev WhatsApp chat answering about a point of sale',
+          imageAnchor: 'center',
+          href: whatsappUrl('Hi Astra Dev, I would like an AI chatbot for my business.'),
+        },
+        {
+          kind: 'offer',
+          code: 'RETAIL // 04',
+          sector: 'Sales and inventory',
+          title: 'POS system with inventory',
+          description:
+            'A system to sell in-store, track your products, and see the day-to-day without spreadsheets.',
+          features: [
+            'Till and invoicing',
+            'Real-time inventory',
+            'Daily reports',
+            'Low-stock alerts',
+            'Multiple users and tills',
+            'Works on desktop and tablet',
+          ],
+          image: '/projects/sistema-pos.jpg',
+          imageAlt: 'Cashier using the Astra Dev point of sale, with inventory, total, and checkout',
+          imageAnchor: 'right',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a POS system with inventory.'),
+        },
+      ],
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'What people ask us before starting',
+      intro: 'Have another question? Write us and we’ll answer.',
+      cta: 'Ask on WhatsApp',
+      href: whatsappUrl('Hi Astra Dev, I have a question.'),
+      items: [
+        {
+          question: 'How much does a system cost?',
+          answer:
+            'It depends on what you need: a website doesn’t cost the same as an ERP. After talking with you we send a proposal with the price and stages, before any work starts.',
+        },
+        {
+          question: 'How long does it take?',
+          answer:
+            'It depends on the scope. A website ships much faster than a full system. The proposal includes dates for each stage.',
+        },
+        {
+          question: 'Can I start small?',
+          answer:
+            'Yes. Start with what you need today, like a POS or a bot, and expand it when your business asks for more.',
+        },
+        {
+          question: 'Does it connect with what I already use?',
+          answer:
+            'In most cases, yes. We can connect your website, inventory, calendar, or WhatsApp so your information isn’t scattered.',
+        },
+        {
+          question: 'Does the WhatsApp bot replace my team?',
+          answer:
+            'No. It answers the frequent questions at any hour and hands the conversation to a person when needed.',
+        },
+        {
+          question: 'What happens after delivery?',
+          answer:
+            'We don’t hand it over and disappear. We stay with you to answer questions, adjust what’s needed, and keep improving.',
         },
       ],
     },
     contact: {
-      eyebrow: "Let's talk",
-      title: "Let's talk about your project.",
-      body: 'Write us on WhatsApp or leave your details. We turn your ideas into a system that grows with you.',
-      formTitle: 'Tell us what you need',
-      formIntro: 'Do you need a website, an operations system, or AI to serve customers?',
-      name: 'Full name *',
-      namePlaceholder: 'Your name',
-      company: 'Company *',
-      companyPlaceholder: 'Your business or company',
-      email: 'Email *',
-      solution: 'Solution type *',
-      solutionPlaceholder: 'Select scope...',
-      budget: 'Estimated budget',
-      description: 'Project description *',
-      descriptionPlaceholder: 'What you want to achieve: sales, inventory, support, or automation...',
-      submit: 'Send and chat on WhatsApp',
-      success: 'Received. We will write soon to book a demo.',
+      eyebrow: 'Contact',
+      title: 'Tell us what you need.',
+      body: 'Fill in these details and WhatsApp opens with your message ready to send. You can also write or call us directly.',
+      formTitle: 'Request your quote',
+      formIntro: 'It takes less than a minute.',
+      name: 'Your name',
+      namePlaceholder: 'E.g. Laura Gómez',
+      company: 'Company or business',
+      companyPlaceholder: 'E.g. Corner Hardware',
+      optional: 'optional',
+      solution: 'What do you need?',
+      solutionPlaceholder: 'Choose an option',
+      description: 'Tell us a bit more',
+      descriptionPlaceholder:
+        'E.g. I run a store and want to track inventory and sell on WhatsApp.',
+      submit: 'Continue on WhatsApp',
+      success: 'We opened WhatsApp with your message. Just hit send.',
+      message: {
+        greeting: 'Hi Astra Dev, I’m {name}',
+        company: ' from {company}',
+        interest: 'I’m interested in: {solution}.',
+      },
       channels: [
         {
           icon: 'chat',
           label: 'WhatsApp',
-          value: '311 822 1480',
-          href: 'https://wa.me/573118221480',
+          value: '314 872 1707',
+          href: whatsappUrl('Hi Astra Dev, I would like a quote for a project.'),
         },
         {
           icon: 'call',
           label: 'Phone',
-          value: '311 822 1480',
-          href: 'tel:+573118221480',
+          value: '314 828 1480',
+          href: 'tel:+573148281480',
         },
         {
           icon: 'alternate_email',
@@ -538,25 +889,24 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
         },
       ],
       solutions: [
-        { value: 'web', label: 'Web development / platform' },
-        { value: 'pos', label: 'Sales, inventory, and operations' },
-        { value: 'ai', label: 'AI and automated support' },
+        { value: 'pos', label: 'POS system' },
+        { value: 'erp', label: 'ERP' },
+        { value: 'crm', label: 'CRM' },
+        { value: 'bot', label: 'WhatsApp bot' },
+        { value: 'ai', label: 'AI integration' },
+        { value: 'saas', label: 'SaaS platform' },
+        { value: 'web', label: 'Website or landing page' },
         { value: 'custom', label: 'Custom system' },
-        { value: 'consulting', label: 'Technology consulting' },
-      ],
-      budgets: [
-        { value: 'piloto', label: 'Pilot / demo' },
-        { value: 'producto', label: 'Product' },
-        { value: 'plataforma', label: 'Platform' },
-        { value: 'definir', label: 'To define' },
+        { value: 'unsure', label: 'Not sure yet, I’d like advice' },
       ],
     },
     footer: {
-      blurb: 'Custom software and AI for real businesses. Built to grow with you.',
+      blurb: 'Custom software and AI for real businesses. Ideas that build the future.',
       explore: 'Explore',
+      solutions: 'Solutions',
       contact: 'Contact',
       rights: 'All rights reserved.',
-      proposal: "Let's talk about your project",
+      proposal: 'Get a quote on WhatsApp',
     },
   },
 };

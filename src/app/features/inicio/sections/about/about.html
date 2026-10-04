@@ -1,7 +1,7 @@
 <section id="sobre-nosotros" class="w-full py-space-xl">
   <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
     <div class="grid grid-cols-1 items-center gap-gutter lg:grid-cols-12">
-      <div class="flex flex-col lg:col-span-6">
+      <div appReveal class="flex flex-col lg:col-span-6">
         <div class="mb-space-sm inline-flex items-center gap-space-xs text-secondary">
           <span class="material-symbols-outlined text-label-md">verified</span>
           <span class="font-label-sm text-label-sm uppercase tracking-wider">
@@ -16,8 +16,12 @@
         </p>
 
         <div class="space-y-space-md">
-          @for (pillar of i18n.copy().about.pillars; track pillar.title) {
-            <div class="flex items-start gap-space-md rounded bg-surface-container p-space-md">
+          @for (pillar of i18n.copy().about.pillars; track pillar.title; let i = $index) {
+            <div
+              appReveal
+              [revealDelay]="i * 80"
+              class="flex items-start gap-space-md rounded bg-surface-container p-space-md transition duration-300 hover:bg-surface-container-high"
+            >
               <div
                 class="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-surface-container-high text-primary"
               >
@@ -32,7 +36,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col items-center lg:col-span-6">
+      <div appReveal [revealDelay]="120" class="flex flex-col items-center lg:col-span-6">
         <div class="mb-space-lg flex w-full max-w-lg justify-center rounded bg-surface-container-low p-space-xl">
           <app-brand-logo variant="stacked" imgClass="w-56 sm:w-72 h-auto" />
         </div>

@@ -3,23 +3,27 @@ export interface NavLink {
   fragment: string;
 }
 
-export interface StatItem {
-  label: string;
-  value: string;
-  detail: string;
-}
-
 export interface ServiceItem {
   icon: string;
   title: string;
   description: string;
-  tags: string[];
-  image: string;
-  imageAlt: string;
+  idealFor: string;
+  href: string;
+}
+
+export interface SectorItem {
+  icon: string;
+  title: string;
+  description: string;
 }
 
 export interface AiCapability {
   icon: string;
+  title: string;
+  description: string;
+}
+
+export interface ProcessStep {
   title: string;
   description: string;
 }
@@ -30,20 +34,29 @@ export interface AboutPillar {
   description: string;
 }
 
-export interface ProjectMetric {
-  label: string;
-  value: string;
-}
-
 export interface ProjectItem {
+  kind: 'client' | 'product' | 'offer';
   code: string;
   sector: string;
   title: string;
   description: string;
-  metrics: ProjectMetric[];
-  tags: string[];
+  features: string[];
   image: string;
   imageAlt: string;
+  imageFit?: 'cover' | 'contain';
+  imageAnchor?: 'center' | 'right';
+  href: string;
+  liveUrl?: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface ChatMessage {
+  from: 'client' | 'business';
+  text: string;
 }
 
 export interface ContactChannel {

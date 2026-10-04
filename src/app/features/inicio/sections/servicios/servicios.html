@@ -1,6 +1,6 @@
-<section id="servicios" class="w-full py-space-xl">
+<section id="servicios" class="w-full py-space-xl lg:py-20">
   <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
-    <div class="mb-space-lg flex flex-col justify-between gap-space-lg lg:flex-row lg:items-end">
+    <div appReveal class="mb-space-xl flex flex-col justify-between gap-space-md lg:flex-row lg:items-end">
       <div class="max-w-3xl">
         <div
           class="mb-space-md inline-flex items-center gap-space-xs rounded-full bg-accent/15 px-space-sm py-space-xs"
@@ -10,110 +10,70 @@
             {{ i18n.copy().services.eyebrow }}
           </span>
         </div>
-        <h2 class="font-headline-lg text-headline-lg font-bold tracking-tight text-primary">
+        <h2 class="font-headline-lg text-headline-lg-mobile font-bold tracking-tight text-primary md:text-headline-lg">
           {{ i18n.copy().services.title }}
         </h2>
       </div>
-      <div class="flex items-end justify-between gap-space-lg">
-        <p class="max-w-md border-l-2 border-accent/50 pl-space-md font-body-lg text-body-lg text-on-surface">
-          {{ i18n.copy().services.intro }}
-        </p>
-        <div class="hidden shrink-0 items-center gap-space-sm sm:flex">
-          <button
-            class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
-            type="button"
-            [attr.aria-label]="i18n.copy().services.prev"
-            (click)="prev()"
+      <p class="max-w-md border-l-2 border-accent/50 pl-space-md font-body-lg text-body-lg text-on-surface">
+        {{ i18n.copy().services.intro }}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-4">
+      @for (service of i18n.copy().services.items; track service.title; let i = $index) {
+        <article
+          appReveal
+          [revealDelay]="i * 70"
+          class="flex flex-col rounded-lg border border-outline-variant/50 bg-surface-container-low p-space-lg transition duration-300 ease-out hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_18px_40px_-28px_rgba(123,208,255,0.8)]"
+        >
+          <div class="mb-space-md flex h-11 w-11 items-center justify-center rounded bg-accent/15 text-accent">
+            <span class="material-symbols-outlined">{{ service.icon }}</span>
+          </div>
+          <h3 class="mb-space-sm font-headline-sm text-headline-sm font-semibold text-primary">
+            {{ service.title }}
+          </h3>
+          <p class="mb-space-md font-body-md text-body-md text-on-surface-variant">
+            {{ service.description }}
+          </p>
+          <p class="mb-space-lg font-body-sm text-body-sm text-on-surface-variant">
+            <span class="font-semibold text-primary">{{ i18n.copy().services.idealFor }}:</span>
+            {{ service.idealFor }}
+          </p>
+          <a
+            class="mt-auto inline-flex items-center gap-space-xs self-start font-label-md text-label-md font-semibold uppercase text-accent transition duration-300 hover:gap-space-sm hover:text-primary"
+            [href]="service.href"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <span class="material-symbols-outlined">chevron_left</span>
-          </button>
-          <button
-            class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
-            type="button"
-            [attr.aria-label]="i18n.copy().services.next"
-            (click)="next()"
-          >
-            <span class="material-symbols-outlined">chevron_right</span>
-          </button>
-        </div>
-      </div>
+            {{ i18n.copy().services.cta }}
+            <span class="sr-only">{{ service.title }}</span>
+            <span class="material-symbols-outlined text-label-lg">arrow_forward</span>
+          </a>
+        </article>
+      }
     </div>
 
     <div
-      class="mx-auto max-w-5xl overflow-hidden rounded"
-      (pointerdown)="onPointerDown($event)"
-      (pointerup)="onPointerUp($event)"
+      appReveal
+      class="mt-space-lg flex flex-col items-start justify-between gap-space-md rounded-lg bg-surface-container p-space-lg transition duration-300 md:flex-row md:items-center"
     >
-      <div class="carousel-track" [style.transform]="'translateX(-' + active() * 100 + '%)'">
-        @for (service of i18n.copy().services.items; track service.title) {
-          <article class="carousel-slide px-0 md:px-0">
-            <div class="service-card flex h-full flex-col rounded md:flex-row">
-              <div class="relative h-44 overflow-hidden md:h-auto md:w-2/5 lg:min-h-[240px]">
-                <img
-                  [src]="service.image"
-                  [alt]="service.imageAlt"
-                  class="h-full w-full object-cover"
-                />
-              </div>
-              <div class="flex flex-1 flex-col justify-center p-space-md md:p-space-lg">
-                <div
-                  class="mb-space-sm flex h-10 w-10 items-center justify-center rounded bg-surface-container text-accent"
-                >
-                  <span class="material-symbols-outlined text-label-lg">{{ service.icon }}</span>
-                </div>
-                <h3 class="mb-space-sm font-headline-sm text-headline-sm font-semibold text-primary">
-                  {{ service.title }}
-                </h3>
-                <p class="mb-space-md font-body-sm text-body-sm text-on-surface-variant md:text-body-md">
-                  {{ service.description }}
-                </p>
-                @if (service.tags.length) {
-                  <div class="flex flex-wrap gap-space-xs">
-                    @for (tag of service.tags; track tag) {
-                      <span
-                        class="rounded bg-accent/10 px-space-sm py-space-xs font-label-sm text-label-sm text-accent"
-                      >
-                        {{ tag }}
-                      </span>
-                    }
-                  </div>
-                }
-              </div>
-            </div>
-          </article>
-        }
+      <div>
+        <p class="mb-space-xs font-headline-sm text-headline-sm font-semibold text-primary">
+          {{ i18n.copy().services.unsureTitle }}
+        </p>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          {{ i18n.copy().services.unsureBody }}
+        </p>
       </div>
-    </div>
-
-    <div class="mt-space-md flex items-center justify-center gap-space-sm sm:hidden">
-      <button
-        class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
-        type="button"
-        [attr.aria-label]="i18n.copy().services.prev"
-        (click)="prev()"
+      <a
+        class="inline-flex shrink-0 items-center gap-space-xs rounded bg-primary px-space-lg py-space-md font-label-md text-label-md font-semibold uppercase text-on-primary hover:bg-primary-fixed hover:text-on-primary-fixed"
+        [href]="i18n.copy().services.unsureHref"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <span class="material-symbols-outlined">chevron_left</span>
-      </button>
-      <button
-        class="nav-btn inline-flex h-10 w-10 items-center justify-center rounded text-primary"
-        type="button"
-        [attr.aria-label]="i18n.copy().services.next"
-        (click)="next()"
-      >
-        <span class="material-symbols-outlined">chevron_right</span>
-      </button>
-    </div>
-
-    <div class="mt-space-md flex items-center justify-center gap-space-xs">
-      @for (service of i18n.copy().services.items; track service.title; let i = $index) {
-        <button
-          class="dot"
-          [class.active]="active() === i"
-          type="button"
-          [attr.aria-label]="service.title"
-          (click)="goTo(i)"
-        ></button>
-      }
+        <span class="material-symbols-outlined text-label-lg">chat</span>
+        {{ i18n.copy().services.unsureCta }}
+      </a>
     </div>
   </div>
 </section>

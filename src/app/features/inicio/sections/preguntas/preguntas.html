@@ -1,0 +1,48 @@
+<section id="preguntas" class="w-full py-space-xl lg:py-20">
+  <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
+    <div class="grid grid-cols-1 gap-space-xl lg:grid-cols-12 lg:gap-gutter">
+      <div appReveal class="lg:col-span-4">
+        <span class="mb-space-xs block font-label-sm text-label-sm uppercase tracking-widest text-accent">
+          {{ i18n.copy().faq.eyebrow }}
+        </span>
+        <h2 class="mb-space-sm font-headline-lg text-headline-lg-mobile font-bold tracking-tight text-primary md:text-headline-lg">
+          {{ i18n.copy().faq.title }}
+        </h2>
+        <p class="mb-space-lg font-body-lg text-body-lg text-on-surface-variant">
+          {{ i18n.copy().faq.intro }}
+        </p>
+        <a
+          class="inline-flex items-center gap-space-xs rounded bg-surface-container-high px-space-lg py-space-md font-label-md text-label-md font-semibold uppercase text-on-surface hover:bg-surface-container-highest"
+          [href]="i18n.copy().faq.href"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="material-symbols-outlined text-label-lg">chat</span>
+          {{ i18n.copy().faq.cta }}
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-space-sm lg:col-span-8">
+        @for (item of i18n.copy().faq.items; track item.question; let i = $index) {
+          <details
+            appReveal
+            [revealDelay]="i * 60"
+            class="group rounded-lg bg-surface-container-low transition duration-300 open:bg-surface-container"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-space-md p-space-lg font-headline-sm text-body-lg font-semibold text-primary [&::-webkit-details-marker]:hidden"
+            >
+              {{ item.question }}
+              <span class="material-symbols-outlined shrink-0 text-accent transition duration-300 group-open:rotate-180">
+                expand_more
+              </span>
+            </summary>
+            <p class="px-space-lg pb-space-lg font-body-md text-body-md text-on-surface-variant">
+              {{ item.answer }}
+            </p>
+          </details>
+        }
+      </div>
+    </div>
+  </div>
+</section>

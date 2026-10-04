@@ -4,10 +4,11 @@ import { RouterOutlet } from '@angular/router';
 import { Footer } from './core/layout/footer/footer';
 import { Header } from './core/layout/header/header';
 import { Starfield } from './core/layout/starfield/starfield';
+import { WhatsappFab } from './core/layout/whatsapp-fab/whatsapp-fab';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, Starfield],
+  imports: [RouterOutlet, Header, Footer, Starfield, WhatsappFab],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

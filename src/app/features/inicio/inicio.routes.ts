@@ -5,6 +5,6 @@ export const INICIO_ROUTES: Routes = [
   {
     path: '',
     component: Inicio,
-    title: 'AstraDev — Software e Inteligencia Artificial',
+    title: 'AstraDev — Software a la medida e Inteligencia Artificial',
   },
 ];

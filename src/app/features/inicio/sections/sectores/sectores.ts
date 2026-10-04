@@ -3,10 +3,10 @@ import { I18nService } from '../../../../core/i18n/i18n.service';
 import { Reveal } from '../../../../shared/ui/reveal/reveal';
 
 @Component({
-  selector: 'app-ia',
+  selector: 'app-sectores',
   imports: [Reveal],
-  templateUrl: './ia.html',
+  templateUrl: './sectores.html',
 })
-export class Ia {
+export class Sectores {
   protected readonly i18n = inject(I18nService);
 }

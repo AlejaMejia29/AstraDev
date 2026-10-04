@@ -1,18 +1,21 @@
 import {
   AboutPillar,
   AiCapability,
+  ChatMessage,
   ContactChannel,
+  FaqItem,
   NavLink,
+  ProcessStep,
   ProjectItem,
+  SectorItem,
   ServiceItem,
-  StatItem,
 } from '../../shared/models/site.models';
+import { QuoteTemplate } from '../../shared/utils/whatsapp';
 
 export type Lang = 'es' | 'en';
 
 export interface AppCopy {
   title: string;
-  quote: string;
   nav: NavLink[];
   header: {
     quote: string;
@@ -20,27 +23,47 @@ export interface AppCopy {
     language: string;
     theme: string;
   };
-  hero: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    body: string;
-    ctaPrimary: string;
-    ctaSecondary: string;
-  };
   whatsapp: {
     href: string;
     phone: string;
-    label: string;
   };
-  stats: StatItem[];
+  floating: {
+    label: string;
+    aria: string;
+  };
+  hero: {
+    badge: string;
+    title: string;
+    highlight: string;
+    body: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    trust: string[];
+    chat: {
+      name: string;
+      status: string;
+      messages: ChatMessage[];
+      notificationTitle: string;
+      notificationBody: string;
+    };
+  };
   services: {
     eyebrow: string;
     title: string;
     intro: string;
-    prev: string;
-    next: string;
+    idealFor: string;
+    cta: string;
+    unsureTitle: string;
+    unsureBody: string;
+    unsureCta: string;
+    unsureHref: string;
     items: ServiceItem[];
+  };
+  sectors: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: SectorItem[];
   };
   ia: {
     eyebrow: string;
@@ -49,7 +72,15 @@ export interface AppCopy {
     discoveryLabel: string;
     discoveryBody: string;
     discoveryCta: string;
+    discoveryHref: string;
     items: AiCapability[];
+  };
+  process: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    cta: string;
+    steps: ProcessStep[];
   };
   about: {
     eyebrow: string;
@@ -62,8 +93,21 @@ export interface AppCopy {
     eyebrow: string;
     title: string;
     note: string;
+    includes: string;
     spec: string;
+    live: string;
+    clientBadge: string;
+    productBadge: string;
+    offerBadge: string;
     items: ProjectItem[];
+  };
+  faq: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    cta: string;
+    href: string;
+    items: FaqItem[];
   };
   contact: {
     eyebrow: string;
@@ -75,21 +119,21 @@ export interface AppCopy {
     namePlaceholder: string;
     company: string;
     companyPlaceholder: string;
-    email: string;
+    optional: string;
     solution: string;
     solutionPlaceholder: string;
-    budget: string;
     description: string;
     descriptionPlaceholder: string;
     submit: string;
     success: string;
+    message: QuoteTemplate;
     channels: ContactChannel[];
     solutions: { value: string; label: string }[];
-    budgets: { value: string; label: string }[];
   };
   footer: {
     blurb: string;
     explore: string;
+    solutions: string;
     contact: string;
     rights: string;
     proposal: string;

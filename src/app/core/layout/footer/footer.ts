@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { I18nService } from '../../i18n/i18n.service';
 import { BrandLogo } from '../../../shared/ui/brand-logo/brand-logo';
+import { Reveal } from '../../../shared/ui/reveal/reveal';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, BrandLogo],
+  imports: [RouterLink, BrandLogo, Reveal],
   templateUrl: './footer.html',
   styles: ``,
 })

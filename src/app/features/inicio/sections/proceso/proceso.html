@@ -1,0 +1,43 @@
+<section id="proceso" class="w-full py-space-xl lg:py-20">
+  <div class="mx-auto max-w-[1440px] px-margin-mobile md:px-margin-tablet lg:px-margin">
+    <div appReveal class="mb-space-xl max-w-3xl">
+      <span class="mb-space-xs block font-label-sm text-label-sm uppercase tracking-widest text-accent">
+        {{ i18n.copy().process.eyebrow }}
+      </span>
+      <h2 class="mb-space-sm font-headline-lg text-headline-lg-mobile font-bold tracking-tight text-primary md:text-headline-lg">
+        {{ i18n.copy().process.title }}
+      </h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">
+        {{ i18n.copy().process.intro }}
+      </p>
+    </div>
+
+    <ol class="grid grid-cols-1 gap-gutter sm:grid-cols-2 lg:grid-cols-4">
+      @for (step of i18n.copy().process.steps; track step.title; let i = $index) {
+        <li
+          appReveal
+          [revealDelay]="i * 90"
+          class="relative rounded-lg bg-surface-container-low p-space-lg transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_18px_40px_-28px_rgba(123,208,255,0.55)]"
+        >
+          <span class="mb-space-md block font-display-xl text-headline-lg font-bold text-accent/60">
+            {{ (i + 1).toString().padStart(2, '0') }}
+          </span>
+          <h3 class="mb-space-sm font-headline-sm text-headline-sm font-semibold text-primary">{{ step.title }}</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">{{ step.description }}</p>
+        </li>
+      }
+    </ol>
+
+    <div class="mt-space-xl flex justify-center">
+      <a
+        class="inline-flex items-center gap-space-xs rounded bg-primary px-space-lg py-space-md font-label-md text-label-md font-semibold uppercase text-on-primary transition duration-300 hover:scale-[1.03] hover:bg-primary-fixed hover:text-on-primary-fixed active:scale-[0.98]"
+        [href]="i18n.copy().whatsapp.href"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="material-symbols-outlined text-label-lg">chat</span>
+        {{ i18n.copy().process.cta }}
+      </a>
+    </div>
+  </div>
+</section>
