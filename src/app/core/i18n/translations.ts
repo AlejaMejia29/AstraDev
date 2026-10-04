@@ -396,7 +396,7 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
     contact: {
       eyebrow: 'Contacto',
       title: 'Cuéntanos qué necesitas.',
-      body: 'Llena estos datos y se abre WhatsApp con tu mensaje listo para enviar. También puedes escribirnos o llamarnos directamente.',
+      body: 'Llena estos datos y se abre WhatsApp con tu mensaje listo para enviar. También puedes escribirnos directamente.',
       formTitle: 'Pide tu cotización',
       formIntro: 'Toma menos de un minuto.',
       name: 'Tu nombre',
@@ -424,16 +424,10 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
           href: whatsappUrl('Hola Astra Dev, quiero cotizar un proyecto.'),
         },
         {
-          icon: 'call',
-          label: 'Teléfono',
-          value: '314 828 1480',
-          href: 'tel:+573148281480',
-        },
-        {
           icon: 'alternate_email',
           label: 'Correo',
-          value: 'contacto@astradev.tech',
-          href: 'mailto:contacto@astradev.tech',
+          value: 'astra.dev.tech@gmail.com',
+          href: 'mailto:astra.dev.tech@gmail.com',
         },
       ],
       solutions: [
@@ -848,7 +842,7 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
     contact: {
       eyebrow: 'Contact',
       title: 'Tell us what you need.',
-      body: 'Fill in these details and WhatsApp opens with your message ready to send. You can also write or call us directly.',
+      body: 'Fill in these details and WhatsApp opens with your message ready to send. You can also write to us directly.',
       formTitle: 'Request your quote',
       formIntro: 'It takes less than a minute.',
       name: 'Your name',
@@ -876,16 +870,10 @@ export const TRANSLATIONS: Record<Lang, AppCopy> = {
           href: whatsappUrl('Hi Astra Dev, I would like a quote for a project.'),
         },
         {
-          icon: 'call',
-          label: 'Phone',
-          value: '314 828 1480',
-          href: 'tel:+573148281480',
-        },
-        {
           icon: 'alternate_email',
           label: 'Email',
-          value: 'contacto@astradev.tech',
-          href: 'mailto:contacto@astradev.tech',
+          value: 'astra.dev.tech@gmail.com',
+          href: 'mailto:astra.dev.tech@gmail.com',
         },
       ],
       solutions: [
